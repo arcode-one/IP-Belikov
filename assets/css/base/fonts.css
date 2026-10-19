@@ -1,26 +1,30 @@
 /* ==========================================================================
    Шрифт C059 — свободный аналог Century Schoolbook (URW base35).
    Файлы лежат в assets/fonts, лицензия там же (LICENSE-urw-base35.txt).
+   Основной формат WOFF2 (на ~35% легче), OTF — запасной для совсем старых браузеров.
    font-display: block — пока шрифт грузится, текст не рисуется запасным шрифтом, поэтому нет «прыжка».
    ========================================================================== */
 
 @font-face {
   font-family: "C059";
-  src: url("../../fonts/C059-Roman.otf") format("opentype");
+  src: url("../../fonts/C059-Roman.woff2") format("woff2"),
+       url("../../fonts/C059-Roman.otf") format("opentype");
   font-weight: 400;
   font-display: block;
 }
 
 @font-face {
   font-family: "C059";
-  src: url("../../fonts/C059-Bold.otf") format("opentype");
+  src: url("../../fonts/C059-Bold.woff2") format("woff2"),
+       url("../../fonts/C059-Bold.otf") format("opentype");
   font-weight: 700;
   font-display: block;
 }
 
 @font-face {
   font-family: "C059";
-  src: url("../../fonts/C059-Italic.otf") format("opentype");
+  src: url("../../fonts/C059-Italic.woff2") format("woff2"),
+       url("../../fonts/C059-Italic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: block;
