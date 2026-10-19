@@ -93,6 +93,16 @@
 
 .side-list__items::-webkit-scrollbar { display: none; }
 
+/* Во время перетаскивания мышью: без плавности и выделения текста */
+.side-list__items--dragging {
+  scroll-behavior: auto;
+  cursor: grabbing;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.side-list__items--dragging * { cursor: grabbing; }
+
 /* Телефон: колонка под фото, без своей прокрутки; фото не выше 70% экрана */
 @media (max-width: 700px) {
   .stage {
