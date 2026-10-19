@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Блок products — «База изделий» (блок 1 по ТЗ): миниатюры в одну линию,
+   при загрузке видно 5 позиций, листание треугольниками, свайпом и колесиком.
+   ========================================================================== */
+
+.products {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 6px;
+}
+
+.products__arrow { height: 64px; }
+
+.products__arrow .icon {
+  width: 20px;
+  height: 40px;
+}
+
+.products__item {
+  flex: 0 0 20%;
+  min-width: 0;
+  padding: 0 6px;
+  text-align: center;
+}
+
+.products__image {
+  width: 100%;
+  height: 118px;
+  object-fit: contain;
+}
+
+/* У оригиналов это H2 (по ТЗ), у копий для бесконечной ленты — div */
+.products__title {
+  margin: 8px 0 0;
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+  .products__item { flex-basis: 25%; }
+}
+
+@media (max-width: 560px) {
+  .products { grid-template-columns: minmax(0, 1fr); }
+  .products__arrow { display: none; }
+
+  .products .slider__viewport {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: 10px;
+  }
+
+  .products__item { flex-basis: 38%; }
+  .products__image { height: 100px; }
+}

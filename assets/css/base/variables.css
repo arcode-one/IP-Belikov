@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Переменные сайта: цвета, шрифты, размеры, отступы, скругления, анимации.
+   Меняете значение здесь — меняется везде.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Цвета: основа */
+  --color-paper: #fff;                 /* фон страницы */
+  --color-ink: #2b2622;                /* основной текст */
+  --color-ink-soft: #3d3631;           /* текст под H1 */
+  --color-muted: #6a5f57;              /* второстепенный текст, подсказки */
+  --color-accent: #5b4636;             /* кнопки, акценты */
+  --color-accent-dark: #45352a;        /* кнопки при наведении */
+  --color-error: #a63b2b;
+  --color-success: #3c6a3f;
+
+  /* Цвета: поверхности */
+  --color-band: #f6efe5;               /* плашки-разграничители блоков (от заказчика: R246 G239 B229) */
+  --color-line: #e2d8cb;               /* тонкие рамки */
+  --color-line-strong: #cfc5b9;        /* рамка формы */
+  --color-field: #f7f2ec;              /* фон полей формы */
+  --color-field-focus: #faf6f1;
+  --color-field-border-focus: #cbb9a6;
+  --color-field-border-hover: #e2d6c8;
+  --color-photo-bg: #f1ece6;           /* фон под фото, пока оно грузится */
+  --color-header: rgba(60, 60, 60, .55); /* полупрозрачная серая полоса шапки поверх фото, как в макете заказчика */
+  --color-hero-bg: #3b2e25;
+  --color-footer: #f4f2f0;
+  --color-note-selected: #fbf8f4;
+  --color-note-hover: #bfae9c;
+
+  /* Цвета: кнопки-треугольники */
+  --color-tri: rgba(120, 112, 104, .38);         /* треугольники на белом фоне */
+  --color-tri-hover: rgba(90, 82, 74, .75);
+  --color-tri-overlay: rgba(255, 255, 255, .78); /* треугольники поверх фото */
+  --color-tri-overlay-hover: #fff;
+
+  /* Затемнения */
+  --color-hero-shade: rgba(18, 12, 8, .2);
+  --color-backdrop: rgba(24, 18, 14, .82);
+  --color-backdrop-soft: rgba(24, 18, 14, .6);
+
+  /* Шрифт: C059 — свободный аналог Century Schoolbook */
+  --font-serif: "C059", "Century Schoolbook", Georgia, serif;
+  --font-size-base: 17px;
+  --font-size-small: 14px;
+  --font-size-title: 19px;              /* H1 и заголовки плашек */
+  --line-height-base: 1.5;
+
+  /* Сетка */
+  --container: 1140px;
+  --gutter: 16px;                       /* отступ от края экрана */
+
+  /* Отступы между блоками */
+  --space-block: 80px;
+  --space-title: 20px;                  /* от плашки до содержимого */
+  --space-footer: 64px;
+
+  /* Скругления */
+  --radius-form: 18px;                  /* форма, поля, кнопки */
+  --radius-card: 10px;
+  --radius-dialog: 14px;
+  --radius-pill: 999px;
+
+  /* Тени */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, .12);
+  --shadow-card: 0 10px 30px rgba(40, 28, 20, .14);
+  --shadow-photo: 0 20px 60px rgba(0, 0, 0, .45);
+
+  /* Анимации */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-fast: 160ms;
+  --duration-slide: 420ms;
+
+  /* Слои */
+  --z-overlay: 2;
+  --z-skip-link: 20;
+  --z-cookie: 30;
+}
+
+/* Телефоны: меньше отступы и скругления */
+@media (max-width: 560px) {
+  :root {
+    --font-size-base: 16px;
+    --font-size-title: 17px;
+    --space-block: 52px;
+    --space-title: 16px;
+    --space-footer: 44px;
+    --radius-form: 14px;
+  }
+}

@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Всплывающие окна.
+   Блок dialog-close — крестик. Блок lightbox — просмотр фото.
+   Блок policy-dialog — политика конфиденциальности.
+   ========================================================================== */
+
+.dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .92);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.dialog-close .icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Просмотр фото: окно по размеру самой картинки, без рамки */
+.lightbox {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.lightbox::backdrop { background: var(--color-backdrop); }
+
+.lightbox .dialog-close { box-shadow: 0 2px 10px rgba(0, 0, 0, .25); }
+
+.lightbox__image {
+  outline: none;
+  touch-action: pan-y pinch-zoom;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.lightbox__image img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);   /* запасной вариант для старых браузеров */
+  max-height: calc(100dvh - 32px);
+  border-radius: 6px;
+  box-shadow: var(--shadow-photo);
+}
+
+/* Листание внутри просмотра — только для наборов фото (галерея, оборудование) */
+.lightbox__arrow,
+.lightbox__counter { display: none; }
+
+.lightbox--set .lightbox__arrow,
+.lightbox--set .lightbox__counter { display: grid; }
+
+.lightbox__arrow {
+  width: 44px;
+  height: 80px;
+}
+
+.lightbox__arrow .icon {
+  width: 26px;
+  height: 52px;
+}
+
+.lightbox__counter {
+  top: auto;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Политика конфиденциальности */
+.policy-dialog {
+  width: min(820px, calc(100% - 24px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  border: 0;
+  border-radius: var(--radius-dialog);
+  padding: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  overflow: hidden;
+}
+
+.policy-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.policy-dialog::backdrop { background: var(--color-backdrop-soft); }
+
+.policy-dialog .dialog-close {
+  position: static;
+  flex: none;
+  align-self: flex-end;
+  margin: 8px 8px 0 0;
+}
+
+.policy-dialog__body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 32px 32px;
+}
+
+@media (max-width: 560px) {
+  .policy-dialog__body { padding: 4px 18px 24px; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dialog-close:hover { background: #fff; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog-close { transition: none; }
+}

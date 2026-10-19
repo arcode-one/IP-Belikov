@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Шрифт C059 — свободный аналог Century Schoolbook (URW base35, лицензия AGPL с исключением для шрифтов).
+   Сейчас грузится с CDN jsDelivr; на WordPress файлы будут лежать в assets/fonts.
+   font-display: block — пока шрифт грузится, текст не рисуется запасным шрифтом, поэтому нет «прыжка».
+   ========================================================================== */
+
+@font-face {
+  font-family: "C059";
+  src: url("https://cdn.jsdelivr.net/gh/ArtifexSoftware/urw-base35-fonts/fonts/C059-Roman.otf") format("opentype");
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "C059";
+  src: url("https://cdn.jsdelivr.net/gh/ArtifexSoftware/urw-base35-fonts/fonts/C059-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "C059";
+  src: url("https://cdn.jsdelivr.net/gh/ArtifexSoftware/urw-base35-fonts/fonts/C059-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}

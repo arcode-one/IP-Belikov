@@ -1,0 +1,35 @@
+/* ==========================================================================
+   Иконки из assets/icons. Рисуются маской, цвет берётся из color (currentColor),
+   поэтому одну и ту же иконку можно красить как угодно.
+   Разметка: <span class="icon icon--phone" aria-hidden="true"></span>
+   ========================================================================== */
+
+.icon {
+  display: inline-block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/* Lucide (lucide.dev, ISC) */
+.icon--map-pin { --icon: url("../../icons/map-pin.svg"); }
+.icon--phone { --icon: url("../../icons/phone.svg"); }
+.icon--mail { --icon: url("../../icons/mail.svg"); }
+.icon--x { --icon: url("../../icons/x.svg"); }
+.icon--send { --icon: url("../../icons/send.svg"); }
+.icon--cookie { --icon: url("../../icons/cookie.svg"); }
+.icon--maximize { --icon: url("../../icons/maximize-2.svg"); }
+.icon--arrow-left { --icon: url("../../icons/arrow-left.svg"); }
+
+/* Соцсети */
+.icon--vk { --icon: url("../../icons/vk.svg"); }
+.icon--max { --icon: url("../../icons/max.svg"); }
+
+/* Треугольники для кнопок листания (по ТЗ) */
+.icon--tri-left { --icon: url("../../icons/tri-left.svg"); }
+.icon--tri-right { --icon: url("../../icons/tri-right.svg"); }
+.icon--tri-up { --icon: url("../../icons/tri-up.svg"); }
+.icon--tri-down { --icon: url("../../icons/tri-down.svg"); }

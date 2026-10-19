@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Точка входа стилей. Порядок важен: база → компоненты → блоки страницы.
+   ========================================================================== */
+
+/* База */
+@import url("base/normalize.css");
+@import url("base/variables.css");
+@import url("base/fonts.css");
+@import url("base/base.css");
+
+/* Компоненты (используются в нескольких блоках) */
+@import url("components/icons.css");
+@import url("components/buttons.css");
+@import url("components/slider.css");
+@import url("components/stage.css");
+@import url("components/dialogs.css");
+
+/* Блоки страницы — в порядке появления на сайте */
+@import url("blocks/hero.css");
+@import url("blocks/intro.css");
+@import url("blocks/section.css");
+@import url("blocks/products.css");
+@import url("blocks/works.css");
+@import url("blocks/notes.css");
+@import url("blocks/equipment.css");
+@import url("blocks/contact.css");
+@import url("blocks/footer.css");
+@import url("blocks/cookie.css");
+
+/* Политика конфиденциальности (страница и всплывающее окно) */
+@import url("pages/policy.css");

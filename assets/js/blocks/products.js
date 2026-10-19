@@ -1,0 +1,43 @@
+// ==========================================================================
+// Блок 1 «База изделий»: миниатюры в одну линию, бесконечная лента.
+// По ТЗ подписи — заголовки H2; при загрузке видно 5 позиций.
+// ==========================================================================
+
+import { el, image, button } from '../utils/dom.js';
+import { icon } from '../utils/icons.js';
+import { loopSlider } from '../components/loop-slider.js';
+
+export function initProducts(data, root) {
+  const viewport = el('div', 'slider__viewport');
+  viewport.tabIndex = 0;
+  viewport.setAttribute('role', 'region');
+  viewport.setAttribute('aria-label', data.title);
+  const track = el('div', 'slider__track');
+  viewport.append(track);
+
+  const slides = data.items.map((item) => {
+    const card = el('div', 'products__item');
+    card.append(image(item, { className: 'products__image', alt: '' }), el('h2', 'products__title', item.title));
+    return card;
+  });
+
+  const previous = button('tri tri--prev products__arrow', 'Предыдущие изделия', null, icon('tri-left'));
+  const next = button('tri tri--next products__arrow', 'Следующие изделия', null, icon('tri-right'));
+  root.append(previous, viewport, next);
+
+  loopSlider({
+    viewport,
+    track,
+    slides,
+    previous,
+    next,
+    // Стартовая позиция как на макете: первая позиция за левым краем
+    start: Math.min(data.firstVisible || 0, slides.length - 1),
+    wheel: true,
+    // У копий H2 заменяем на div, чтобы заголовков было 7, а не 35
+    prepareClone: (clone) => {
+      const title = clone.querySelector('h2');
+      title.replaceWith(el('div', 'products__title', title.textContent));
+    },
+  });
+}

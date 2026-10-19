@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Блок tri — кнопки листания-треугольники (по ТЗ).
+   Блок button — основная кнопка («Отправить», «Согласен»).
+   ========================================================================== */
+
+/* Треугольник на белом фоне (лента изделий, колонки миниатюр) */
+.tri {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-tri);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out), opacity var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+}
+
+.tri:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+/* Треугольник поверх фото: полупрозрачный белый с лёгкой тенью */
+.tri--overlay {
+  position: absolute;
+  top: 50%;
+  z-index: var(--z-overlay);
+  width: 34px;
+  height: 64px;
+  transform: translateY(-50%);
+  color: var(--color-tri-overlay);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .35));
+}
+
+.tri--overlay .icon {
+  width: 22px;
+  height: 44px;
+}
+
+.tri--prev.tri--overlay { left: 6px; }
+.tri--next.tri--overlay { right: 6px; }
+
+/* Основная кнопка */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: var(--radius-form);
+  background: var(--color-accent);
+  color: #fff;
+  padding: 9px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out), transform 120ms var(--ease-out);
+}
+
+.button .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.button:active { transform: scale(.97); }
+
+.button:disabled {
+  opacity: .6;
+  cursor: progress;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tri:not(:disabled):hover { color: var(--color-tri-hover); }
+  .tri--overlay:not(:disabled):hover { color: var(--color-tri-overlay-hover); }
+  .button:not(:disabled):hover { background: var(--color-accent-dark); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tri,
+  .button { transition: none; }
+}

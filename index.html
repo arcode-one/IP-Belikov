@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Изготовление деревянных окон, дверей, наличников и реставрация объектов культурного наследия в Томске с 1998 года.">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://xn--80aeffphfpdihwql.xn--p1ai/">
+  <title>Деревянные окна, двери и реставрация в Томске · ИП Беликов</title>
+
+  <!-- Шрифт качаем сразу, параллельно со стилями, чтобы не было подмены шрифта при загрузке -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/ArtifexSoftware/urw-base35-fonts/fonts/C059-Roman.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/ArtifexSoftware/urw-base35-fonts/fonts/C059-Bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="assets/img/hero/hero.webp" as="image" type="image/webp">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <div class="container">
+    <!-- Шапка: имя и контакты, главное фото -->
+    <header class="hero">
+      <div class="hero__bar">
+        <p class="hero__brand"></p>
+        <div class="hero__contacts"></div>
+      </div>
+      <div class="hero__image"></div>
+    </header>
+
+    <main id="main">
+      <!-- H1 и вводный текст (H2 по ТЗ) -->
+      <section class="intro" aria-labelledby="page-title">
+        <h1 class="intro__title" id="page-title"></h1>
+        <h2 class="intro__text"></h2>
+      </section>
+
+      <!-- Блок 1. База изделий -->
+      <section class="section" id="products" aria-labelledby="products-title">
+        <h2 class="section__title" id="products-title"></h2>
+        <div class="products slider"></div>
+      </section>
+
+      <!-- Блок 2. Галерея выполненных работ -->
+      <section class="section" id="works" aria-labelledby="works-title">
+        <h2 class="section__title" id="works-title"></h2>
+        <div class="works"></div>
+      </section>
+
+      <!-- Блок 4. Полезные заметки (по макету — между галереей и оборудованием) -->
+      <section class="section" id="notes" aria-labelledby="notes-title">
+        <h2 class="section__title" id="notes-title"></h2>
+        <div class="notes"></div>
+      </section>
+
+      <!-- Блок 3. Оборудование -->
+      <section class="section" id="equipment" aria-labelledby="equipment-title">
+        <h2 class="section__title" id="equipment-title"></h2>
+        <div class="equipment slider"></div>
+      </section>
+
+      <!-- Напишите нам -->
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact__box">
+          <h2 class="contact__title" id="contact-title">Напишите нам</h2>
+          <div class="contact__layout">
+            <ul class="contact__list"></ul>
+            <div>
+              <p class="contact__lead">Если у Вас есть какие-либо вопросы — заполните форму ниже, и мы с Вами свяжемся.</p>
+              <form class="lead-form" novalidate>
+                <label class="lead-form__field">
+                  <span class="sr-only">Имя</span>
+                  <input class="lead-form__input" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Ваше имя" required>
+                </label>
+                <label class="lead-form__field">
+                  <span class="sr-only">Email</span>
+                  <input class="lead-form__input" name="email" type="email" autocomplete="email" maxlength="120" placeholder="Ваш email">
+                </label>
+                <label class="lead-form__field">
+                  <span class="sr-only">Номер телефона</span>
+                  <input class="lead-form__input" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="Номер телефона">
+                </label>
+                <label class="lead-form__field">
+                  <span class="sr-only">Сообщение</span>
+                  <textarea class="lead-form__input lead-form__input--textarea" name="message" rows="4" maxlength="2000" placeholder="Что нужно изготовить или отреставрировать?"></textarea>
+                </label>
+                <!-- Ловушка для ботов: люди это поле не видят -->
+                <label class="lead-form__hp" aria-hidden="true">Сайт <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+                <label class="lead-form__consent">
+                  <input class="lead-form__checkbox" name="consent" type="checkbox" required>
+                  <span>Согласен на обработку персональных данных в соответствии с <a href="policy.html" data-policy>политикой конфиденциальности</a></span>
+                </label>
+                <div class="lead-form__footer">
+                  <button class="button lead-form__submit" type="submit">Отправить</button>
+                  <p class="lead-form__status" role="status" aria-live="polite"></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__contacts"></div>
+      <div class="footer__social">
+        <p class="footer__social-title">Мы в соц. сетях:</p>
+        <nav class="footer__social-links" aria-label="Социальные сети и мессенджеры"></nav>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Плашка о cookies -->
+  <div class="cookie" role="region" aria-label="Уведомление о cookies" hidden>
+    <p class="cookie__text">Мы используем файлы cookies и обрабатываем персональные данные, чтобы сайт работал корректно. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="policy.html" data-policy>политикой обработки персональных данных</a>.</p>
+    <button class="button cookie__button" type="button">Согласен</button>
+  </div>
+
+  <!-- Политика конфиденциальности -->
+  <dialog class="policy-dialog" id="policy-dialog" aria-labelledby="policy-dialog-title">
+    <button class="dialog-close" type="button" aria-label="Закрыть"><span class="icon icon--x" aria-hidden="true"></span></button>
+    <div class="policy-dialog__body"></div>
+  </dialog>
+
+  <!-- Просмотр фото -->
+  <dialog class="lightbox" id="lightbox" aria-label="Просмотр изображения">
+    <button class="dialog-close" type="button" aria-label="Закрыть просмотр"><span class="icon icon--x" aria-hidden="true"></span></button>
+    <div class="lightbox__image" tabindex="-1" autofocus></div>
+  </dialog>
+</body>
+</html>

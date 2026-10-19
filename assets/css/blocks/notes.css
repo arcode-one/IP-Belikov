@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Блок notes — «Полезные заметки» (блок 4 по ТЗ): слева большое фото,
+   справа колонка пунктов (фото, заголовок, текст) с прокруткой; на телефоне список под фото.
+   ========================================================================== */
+
+.notes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 18px;
+}
+
+.notes .side-list__items { gap: 12px; }
+
+.notes__item {
+  flex: none;
+  padding: 14px;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+}
+
+.notes__item--selected {
+  border-color: var(--color-accent);
+  background: var(--color-note-selected);
+}
+
+.notes__head {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.notes__thumb {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+}
+
+.notes__title {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.25;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.notes__body {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.notes__paragraph {
+  margin: 0 0 8px;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.notes__paragraph:last-child { margin-bottom: 0; }
+
+@media (max-width: 860px) {
+  .notes { grid-template-columns: minmax(0, 1fr); }
+  .notes .side-list__items { overflow: visible; }
+}
+
+@media (max-width: 560px) {
+  .notes__paragraph { text-align: left; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .notes__item:hover { border-color: var(--color-note-hover); }
+  .notes__item:hover .notes__title { color: var(--color-accent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notes__item,
+  .notes__title { transition: none; }
+}

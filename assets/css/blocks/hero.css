@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Блок hero — шапка: тёмная полоса с именем и контактами + главное фото.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  color: #fff;
+}
+
+/* Полупрозрачная полоса поверх фото: имя слева, контакты справа (как в макете заказчика) */
+.hero__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 9px 18px;
+  background: var(--color-header);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+}
+
+.hero__brand {
+  margin: 0;
+  font-size: var(--font-size-title);
+}
+
+.hero__contacts {
+  display: grid;
+  text-align: right;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.hero__contacts a { text-decoration: none; }
+
+/* Главное фото, чуть приглушённое, как на макете */
+.hero__image {
+  position: relative;
+  height: clamp(220px, 32vw, 380px);
+  background: var(--color-hero-bg);
+  overflow: hidden;
+}
+
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: saturate(.78) contrast(1.04);
+}
+
+.hero__image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--color-hero-shade);
+  pointer-events: none;
+}
+
+@media (max-width: 560px) {
+  .hero__bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 12px;
+  }
+
+  .hero__brand { font-size: 16px; }
+
+  .hero__contacts {
+    text-align: left;
+    font-size: 15px;
+  }
+
+  .hero__image { height: 260px; }
+}
+
+/* На тёмной полосе текст остаётся белым, появляется подчёркивание */
+@media (hover: hover) and (pointer: fine) {
+  .hero__contacts a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, .7);
+  }
+}

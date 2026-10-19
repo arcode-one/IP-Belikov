@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Блок stage — большое фото (галерея работ, полезные заметки).
+   Блок side-list — колонка справа от фото с прокруткой треугольниками вверх/вниз.
+   ========================================================================== */
+
+.stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--color-photo-bg);
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+
+.stage__photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+/* Фото целиком, без обрезки: на фото галереи впечатаны адреса */
+.stage__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Значок «увеличить» и счётчик «3 / 16» */
+.stage__zoom,
+.stage__counter {
+  position: absolute;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  background: rgba(255, 255, 255, .9);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-soft);
+}
+
+.stage__zoom {
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.stage__zoom .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.stage__counter {
+  top: 12px;
+  left: 12px;
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Колонка справа: высота = высоте фото, внутри прокрутка */
+.side-list {
+  height: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.side-list__arrow {
+  flex: none;
+  height: 26px;
+}
+
+.side-list__arrow .icon {
+  width: 40px;
+  height: 18px;
+}
+
+.side-list__items {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.side-list__items::-webkit-scrollbar { display: none; }
+
+/* Планшет и телефон: колонка под фото, без своей прокрутки */
+@media (max-width: 860px) {
+  .side-list {
+    height: auto;
+    min-height: 0;
+  }
+
+  .side-list__arrow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-list__items { scroll-behavior: auto; }
+}

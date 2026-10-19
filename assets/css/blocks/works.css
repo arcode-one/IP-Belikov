@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Блок works — «Галерея выполненных работ» (блок 2 по ТЗ):
+   большое фото слева, колонка миниатюр справа; на планшете и телефоне миниатюры под фото.
+   ========================================================================== */
+
+.works {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  gap: 14px;
+}
+
+.works__thumb {
+  flex: none;
+  height: 116px;
+  padding: 0;
+  border: 0;
+  background: var(--color-photo-bg);
+  cursor: pointer;
+  opacity: .6;
+  overflow: hidden;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.works__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.works__thumb--selected {
+  opacity: 1;
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+@media (max-width: 860px) {
+  .works { grid-template-columns: minmax(0, 1fr); }
+
+  .works .side-list__items {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .works__thumb {
+    width: 96px;
+    height: 72px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .works__thumb:hover { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .works__thumb { transition: none; }
+}
