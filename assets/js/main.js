@@ -1,7 +1,3 @@
-// ==========================================================================
-// Точка входа скриптов. Каждый блок страницы — свой модуль в assets/js/blocks.
-// ==========================================================================
-
 import content from './content.js';
 import { initLightbox } from './components/lightbox.js';
 import { initPolicyDialog } from './components/policy-dialog.js';
