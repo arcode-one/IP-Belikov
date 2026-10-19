@@ -45,3 +45,7 @@ initContact(content);
 initLeadForm(content);
 initFooter(content);
 initCookie();
+
+// Показываем страницу, когда всё собрано и шрифт загружен (но ждём шрифт не дольше 1,5 с)
+const fontsReady = Promise.race([document.fonts.ready, new Promise((resolve) => setTimeout(resolve, 1500))]);
+fontsReady.then(() => document.documentElement.classList.remove('is-loading'));

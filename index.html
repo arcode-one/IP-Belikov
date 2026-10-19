@@ -9,10 +9,54 @@
   <title>Деревянные окна, двери и реставрация в Томске · ИП Беликов</title>
 
   <!-- Шрифт качаем сразу, параллельно со стилями, чтобы не было подмены шрифта при загрузке -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/ArtifexSoftware/urw-base35-fonts/fonts/C059-Roman.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/ArtifexSoftware/urw-base35-fonts/fonts/C059-Bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="assets/fonts/C059-Roman.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="assets/fonts/C059-Bold.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="assets/img/hero/hero.webp" as="image" type="image/webp">
+
+  <!-- Пока страница собирается, она скрыта; main.js показывает её, когда готовы скрипты и шрифт -->
+  <script>document.documentElement.classList.add('is-loading');</script>
+
+  <!-- Стили и модули подключены через @import / import; здесь браузеру сразу сообщаем обо всех файлах,
+       чтобы он качал их параллельно, а не цепочкой -->
+  <link rel="preload" href="assets/css/base/normalize.css" as="style">
+  <link rel="preload" href="assets/css/base/variables.css" as="style">
+  <link rel="preload" href="assets/css/base/fonts.css" as="style">
+  <link rel="preload" href="assets/css/base/base.css" as="style">
+  <link rel="preload" href="assets/css/components/icons.css" as="style">
+  <link rel="preload" href="assets/css/components/buttons.css" as="style">
+  <link rel="preload" href="assets/css/components/slider.css" as="style">
+  <link rel="preload" href="assets/css/components/stage.css" as="style">
+  <link rel="preload" href="assets/css/components/dialogs.css" as="style">
+  <link rel="preload" href="assets/css/blocks/hero.css" as="style">
+  <link rel="preload" href="assets/css/blocks/intro.css" as="style">
+  <link rel="preload" href="assets/css/blocks/section.css" as="style">
+  <link rel="preload" href="assets/css/blocks/products.css" as="style">
+  <link rel="preload" href="assets/css/blocks/works.css" as="style">
+  <link rel="preload" href="assets/css/blocks/notes.css" as="style">
+  <link rel="preload" href="assets/css/blocks/equipment.css" as="style">
+  <link rel="preload" href="assets/css/blocks/contact.css" as="style">
+  <link rel="preload" href="assets/css/blocks/footer.css" as="style">
+  <link rel="preload" href="assets/css/blocks/cookie.css" as="style">
+  <link rel="preload" href="assets/css/pages/policy.css" as="style">
+  <link rel="modulepreload" href="assets/js/content.js">
+  <link rel="modulepreload" href="assets/js/utils/dom.js">
+  <link rel="modulepreload" href="assets/js/utils/icons.js">
+  <link rel="modulepreload" href="assets/js/utils/motion.js">
+  <link rel="modulepreload" href="assets/js/utils/gestures.js">
+  <link rel="modulepreload" href="assets/js/components/loop-slider.js">
+  <link rel="modulepreload" href="assets/js/components/stage.js">
+  <link rel="modulepreload" href="assets/js/components/lightbox.js">
+  <link rel="modulepreload" href="assets/js/components/policy-dialog.js">
+  <link rel="modulepreload" href="assets/js/blocks/hero.js">
+  <link rel="modulepreload" href="assets/js/blocks/intro.js">
+  <link rel="modulepreload" href="assets/js/blocks/products.js">
+  <link rel="modulepreload" href="assets/js/blocks/works.js">
+  <link rel="modulepreload" href="assets/js/blocks/notes.js">
+  <link rel="modulepreload" href="assets/js/blocks/equipment.js">
+  <link rel="modulepreload" href="assets/js/blocks/contact.js">
+  <link rel="modulepreload" href="assets/js/blocks/lead-form.js">
+  <link rel="modulepreload" href="assets/js/blocks/footer.js">
+  <link rel="modulepreload" href="assets/js/blocks/cookie.js">
 
   <link rel="stylesheet" href="assets/css/main.css">
   <script type="module" src="assets/js/main.js"></script>
