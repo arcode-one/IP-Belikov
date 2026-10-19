@@ -35,10 +35,25 @@ const content = {
   // Блок 2. Адреса объектов впечатаны в сами фото
   works: {
     title: 'Галерея выполненных работ',
-    items: Array.from({ length: 16 }, (_, i) => ({
-      src: `assets/img/works/work-${String(i + 1).padStart(2, '0')}.webp`,
-      alt: `Выполненная работа, фото ${i + 1}`,
-    })),
+    // alt — что на фото и адрес объекта (адреса впечатаны в сами фото)
+    items: [
+      { src: 'assets/img/works/work-01.webp', alt: 'Фасад деревянного дома с резными наличниками и фронтонами, Томск, ул. Красноармейская, 12а' },
+      { src: 'assets/img/works/work-02.webp', alt: 'Резной фронтон и наличники, Томск, ул. Красноармейская, 12а' },
+      { src: 'assets/img/works/work-03.webp', alt: 'Фасад с резными наличниками после реставрации, Томск, ул. Красноармейская, 12а' },
+      { src: 'assets/img/works/work-04.webp', alt: 'Резной наличник на окно, Томск, ул. Красноармейская, 12а' },
+      { src: 'assets/img/works/work-05.webp', alt: 'Отреставрированный фасад с наличниками, Томск, пер. Кустарный, 4' },
+      { src: 'assets/img/works/work-06.webp', alt: 'Наружная лестница с резным декором, Томск, пер. Кустарный, 4' },
+      { src: 'assets/img/works/work-07.webp', alt: 'Фасад с наличниками и резным карнизом, Томск, пер. Кустарный, 4' },
+      { src: 'assets/img/works/work-08.webp', alt: 'Резной наличник и деревянное окно, Томск, пер. Кустарный, 4' },
+      { src: 'assets/img/works/work-09.webp', alt: 'Фасад бревенчатого дома с наличниками, Томск, ул. Пушкина, 24' },
+      { src: 'assets/img/works/work-10.webp', alt: 'Наличник и деревянная входная дверь, Томск, ул. Пушкина, 24' },
+      { src: 'assets/img/works/work-11.webp', alt: 'Наличник и балкон с точёными балясинами, Томск, ул. Пушкина, 24' },
+      { src: 'assets/img/works/work-12.webp', alt: 'Резные наличники на фасаде, Томск, ул. Пушкина, 24' },
+      { src: 'assets/img/works/work-13.webp', alt: 'Деревянная межкомнатная дверь, Томск, ул. Пушкина, 24' },
+      { src: 'assets/img/works/work-14.webp', alt: 'Резной карниз с подсветкой в интерьере, Томск, ул. Пушкина, 24' },
+      { src: 'assets/img/works/work-15.webp', alt: 'Столы с точёными ножками в интерьере, Томск, ул. Пушкина, 24' },
+      { src: 'assets/img/works/work-16.webp', alt: 'Деревянное окно в интерьере, Томск, ул. Пушкина, 24' },
+    ],
   },
   // Блок 4
   notes: {
@@ -71,10 +86,16 @@ const content = {
   // Блок 3
   equipment: {
     title: 'Оборудование',
-    items: Array.from({ length: 8 }, (_, i) => ({
-      src: `assets/img/equipment/equipment-0${i + 1}.webp`,
-      alt: `Оборудование производства, фото ${i + 1}`,
-    })),
+    items: [
+      { src: 'assets/img/equipment/equipment-01.webp', alt: 'Сушильные камеры KATRES для камерной сушки древесины' },
+      { src: 'assets/img/equipment/equipment-02.webp', alt: 'Четырёхсторонний строгальный станок Weinig Powermat 2000' },
+      { src: 'assets/img/equipment/equipment-03.webp', alt: 'Сканер для контроля качества и оптимизации древесины' },
+      { src: 'assets/img/equipment/equipment-04.webp', alt: 'Линия сращивания бруска GreCon' },
+      { src: 'assets/img/equipment/equipment-05.webp', alt: 'Пресс ProfiPress 4500 для склейки бруса' },
+      { src: 'assets/img/equipment/equipment-06.webp', alt: 'Обрабатывающий центр с ЧПУ для изготовления окон' },
+      { src: 'assets/img/equipment/equipment-07.webp', alt: 'Обрабатывающий центр с ЧПУ Format-4' },
+      { src: 'assets/img/equipment/equipment-08.webp', alt: 'Линия покраски Makor' },
+    ],
   },
   // Заглушки: заказчик пришлёт ссылки позже
   socials: [
