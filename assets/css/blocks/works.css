@@ -28,7 +28,14 @@
   outline-offset: -2px;
 }
 
+/* Планшет: колонка миниатюр поуже */
 @media (max-width: 860px) {
+  .works { grid-template-columns: minmax(0, 1fr) 130px; }
+  .works__thumb { height: 96px; }
+}
+
+/* Телефон: миниатюры лентой под фото */
+@media (max-width: 700px) {
   .works { grid-template-columns: minmax(0, 1fr); }
 
   .works .side-list__items {

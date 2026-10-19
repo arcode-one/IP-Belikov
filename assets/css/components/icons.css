@@ -17,6 +17,7 @@
 .icon--cookie { --icon: url("../../icons/cookie.svg"); }
 .icon--maximize { --icon: url("../../icons/maximize-2.svg"); }
 .icon--arrow-left { --icon: url("../../icons/arrow-left.svg"); }
+.icon--chevron-down { --icon: url("../../icons/chevron-down.svg"); }
 
 /* Соцсети */
 .icon--vk { --icon: url("../../icons/vk.svg"); }

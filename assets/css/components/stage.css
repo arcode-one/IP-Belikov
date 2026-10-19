@@ -93,8 +93,13 @@
 
 .side-list__items::-webkit-scrollbar { display: none; }
 
-/* Планшет и телефон: колонка под фото, без своей прокрутки */
-@media (max-width: 860px) {
+/* Телефон: колонка под фото, без своей прокрутки; фото не выше 70% экрана */
+@media (max-width: 700px) {
+  .stage {
+    max-height: 70vh;
+    max-height: 70svh;
+  }
+
   .side-list {
     height: auto;
     min-height: 0;

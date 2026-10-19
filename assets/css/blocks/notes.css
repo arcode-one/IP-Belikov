@@ -33,6 +33,14 @@
   cursor: pointer;
 }
 
+.notes__chevron {
+  display: none;
+  width: 20px;
+  height: 20px;
+  color: var(--color-muted);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
 .notes__thumb {
   width: 96px;
   height: 72px;
@@ -61,9 +69,33 @@
 
 .notes__paragraph:last-child { margin-bottom: 0; }
 
+/* Планшет: фото и колонка заметок поровну, текст без выравнивания по ширине */
 @media (max-width: 860px) {
+  .notes { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .notes .stage { aspect-ratio: 4 / 5; }   /* выше фото — выше колонка с текстом */
+  .notes__paragraph { text-align: left; }
+}
+
+/* Телефон: аккордеон — текст виден только у выбранного пункта */
+@media (max-width: 700px) {
   .notes { grid-template-columns: minmax(0, 1fr); }
+  .notes .stage {
+    aspect-ratio: 4 / 3;
+    scroll-margin-top: 12px;
+  }
   .notes .side-list__items { overflow: visible; }
+
+  .notes__head { grid-template-columns: 72px minmax(0, 1fr) 20px; }
+
+  .notes__thumb {
+    width: 72px;
+    height: 54px;
+  }
+
+  .notes__chevron { display: block; }
+  .notes__item--selected .notes__chevron { transform: rotate(180deg); }
+  .notes__item:not(.notes__item--selected) .notes__body { display: none; }
+  .notes__item--selected { order: -1; }   /* открытый пункт сразу под фото */
 }
 
 @media (max-width: 560px) {
@@ -77,5 +109,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .notes__item,
-  .notes__title { transition: none; }
+  .notes__title,
+  .notes__chevron { transition: none; }
 }
