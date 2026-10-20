@@ -16,9 +16,7 @@ export function initFooter(content) {
     item.append(icon(social.id));
     item.setAttribute('aria-label', social.text);
     item.title = social.text;
-    // href="#" — ссылка-заглушка, пока заказчик не прислал адрес
-    if (social.href === '#') item.addEventListener('click', (event) => event.preventDefault());
-    else if (item.tagName === 'A') {
+    if (item.tagName === 'A') {
       item.target = '_blank';
       item.rel = 'noopener';
     }

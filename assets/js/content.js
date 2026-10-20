@@ -97,10 +97,9 @@ const content = {
       { src: 'assets/img/equipment/equipment-08.webp', alt: 'Линия покраски Makor' },
     ],
   },
-  // Заглушки: заказчик пришлёт ссылки позже
   socials: [
-    { id: 'vk', text: 'ВКонтакте', href: '#' },
-    { id: 'max', text: 'MAX', href: '#' },
+    { id: 'vk', text: 'ВКонтакте', href: 'https://vk.ru/belikov_70' },
+    { id: 'max', text: 'MAX', href: 'https://max.ru/u/f9LHodD0cOJBZn1jFNjC21VRcTMfF4meoePWZ_4RlE5FCegSaMcdsqHrvuk' },
   ],
 };
 
