@@ -1,114 +1,45 @@
+/* Как галерея работ, но фото ниже — 2/3 её высоты. Текст заметок впечатан в картинки */
 .notes {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  gap: 14px;
 }
 
-.notes .side-list__items { gap: 12px; }
-
-.notes__item {
-  flex: none;
-  padding: 14px;
-  border: 1px solid var(--color-line);
+.notes .stage {
+  aspect-ratio: 2 / 1;
   background: var(--color-paper);
-  cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
 }
 
-.notes__item--selected {
-  border-color: var(--color-accent);
-  background: var(--color-note-selected);
+/* Миниатюры целиком, без обрезки: на них виден текст заметки */
+.notes .side-list__thumb {
+  height: auto;
+  background: var(--color-paper);
 }
 
-.notes__head {
-  display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  gap: 12px;
-  align-items: center;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: none;
-  text-align: left;
-  cursor: pointer;
+.notes .side-list__thumb img {
+  height: auto;
+  object-fit: contain;
 }
 
-.notes__chevron {
-  display: none;
-  width: 20px;
-  height: 20px;
-  color: var(--color-muted);
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.notes__thumb {
-  width: 96px;
-  height: 72px;
-  object-fit: cover;
-}
-
-.notes__title {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.25;
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.notes__body {
-  margin-top: 10px;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.notes__paragraph {
-  margin: 0 0 8px;
-  text-align: justify;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-}
-
-.notes__paragraph:last-child { margin-bottom: 0; }
-
-/* Планшет: фото и колонка заметок поровну, текст без выравнивания по ширине */
 @media (max-width: 860px) {
-  .notes { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .notes .stage { aspect-ratio: 4 / 5; }   /* выше фото — выше колонка с текстом */
-  .notes__paragraph { text-align: left; }
+  .notes { grid-template-columns: minmax(0, 1fr) 130px; }
 }
 
-/* Телефон: аккордеон — текст виден только у выбранного пункта */
+/* Телефон: картинка выше (заметки бывают вертикальными), миниатюры лентой под ней */
 @media (max-width: 700px) {
   .notes { grid-template-columns: minmax(0, 1fr); }
-  .notes .stage {
-    aspect-ratio: 4 / 3;
-    scroll-margin-top: 12px;
-  }
-  .notes .side-list__items { overflow: visible; }
+  .notes .stage { aspect-ratio: 1 / 1; }
 
-  .notes__head { grid-template-columns: 72px minmax(0, 1fr) 20px; }
-
-  .notes__thumb {
-    width: 72px;
-    height: 54px;
+  .notes .side-list__items {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
   }
 
-  .notes__chevron { display: block; }
-  .notes__item--selected .notes__chevron { transform: rotate(180deg); }
-  .notes__item:not(.notes__item--selected) .notes__body { display: none; }
-  .notes__item--selected { order: -1; }   /* открытый пункт сразу под фото */
-}
+  .notes .side-list__thumb { height: 96px; }
 
-@media (max-width: 560px) {
-  .notes__paragraph { text-align: left; }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .notes__item:hover { border-color: var(--color-note-hover); }
-  .notes__item:hover .notes__title { color: var(--color-accent); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .notes__item,
-  .notes__title,
-  .notes__chevron { transition: none; }
+  .notes .side-list__thumb img {
+    width: auto;
+    height: 100%;
+  }
 }

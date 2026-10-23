@@ -48,6 +48,23 @@
   height: 16px;
 }
 
+/* Подпись внизу фото на затемнении */
+.equipment__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 28px 12px 10px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .55));
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+  pointer-events: none;
+}
+
 .equipment__item:focus-visible .equipment__zoom {
   opacity: 1;
   transform: none;

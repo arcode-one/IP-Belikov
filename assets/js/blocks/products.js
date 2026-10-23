@@ -18,7 +18,9 @@ export function initProducts(data, root) {
 
   const previous = button('tri tri--prev products__arrow', 'Предыдущие изделия', null, icon('tri-left'));
   const next = button('tri tri--next products__arrow', 'Следующие изделия', null, icon('tri-right'));
-  root.append(previous, viewport, next);
+  const counter = el('span', 'counter products__counter');
+  counter.setAttribute('aria-hidden', 'true');
+  root.append(previous, viewport, next, counter);
 
   loopSlider({
     viewport,
@@ -26,9 +28,8 @@ export function initProducts(data, root) {
     slides,
     previous,
     next,
-    // Стартовая позиция как на макете: первая позиция за левым краем
-    start: Math.min(data.firstVisible || 0, slides.length - 1),
     wheel: true,
+    onChange: (first) => { counter.textContent = `${first + 1} / ${slides.length}`; },
     // У копий H2 заменяем на div, чтобы заголовков было 7, а не 35
     prepareClone: (clone) => {
       const title = clone.querySelector('h2');

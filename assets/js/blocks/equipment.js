@@ -15,6 +15,7 @@ export function initEquipment(data, root) {
     const zoom = el('span', 'equipment__zoom');
     zoom.append(icon('maximize'));
     const card = button('equipment__item', `Увеличить фото ${i + 1}`, null, image(item, { alt: '' }), zoom);
+    if (item.caption) card.append(el('span', 'equipment__caption', item.caption));
     card.dataset.index = i;
     card.setAttribute('aria-haspopup', 'dialog');
     return card;

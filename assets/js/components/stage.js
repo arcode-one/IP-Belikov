@@ -76,17 +76,13 @@ function bindDragScroll(list) {
   }, true);
 }
 
-/**
- * Показывает выбранный элемент в списке, не прокручивая всю страницу.
- * align: 'center' — для миниатюр; 'start' — для длинных пунктов заметок (видно заголовок).
- */
-export function revealInList(list, item, { align = 'center', instant = false } = {}) {
-  const behavior = instant ? 'auto' : scrollBehavior();
+/** Показывает выбранную миниатюру в колонке (или ленте), не прокручивая всю страницу */
+export function revealInList(list, item) {
+  const behavior = scrollBehavior();
   const vertical = list.scrollHeight > list.clientHeight + 1;
   if (vertical) {
     const top = item.offsetTop - list.offsetTop;
-    if (align === 'start') list.scrollTo({ top, behavior });
-    else if (top < list.scrollTop || top + item.offsetHeight > list.scrollTop + list.clientHeight) {
+    if (top < list.scrollTop || top + item.offsetHeight > list.scrollTop + list.clientHeight) {
       list.scrollTo({ top: top - (list.clientHeight - item.offsetHeight) / 2, behavior });
     }
   } else if (list.scrollWidth > list.clientWidth + 1) {

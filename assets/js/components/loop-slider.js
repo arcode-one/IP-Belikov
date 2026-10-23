@@ -12,8 +12,9 @@ const DRAGGING = 'slider__viewport--dragging';
  * @param {number} [options.start]        — с какой карточки стартовать
  * @param {boolean} [options.wheel]       — листать вертикальным колесиком мыши (блок 1 по ТЗ)
  * @param {(clone: HTMLElement) => void} [options.prepareClone] — доработка копий (например, убрать H2)
+ * @param {(first: number) => void} [options.onChange] — номер первой видимой карточки (для счётчика)
  */
-export function loopSlider({ viewport, track, slides, previous, next, start = 0, wheel = false, prepareClone }) {
+export function loopSlider({ viewport, track, slides, previous, next, start = 0, wheel = false, prepareClone, onChange }) {
   const n = slides.length;
   const copy = () => slides.map((slide) => {
     const clone = slide.cloneNode(true);
@@ -29,6 +30,7 @@ export function loopSlider({ viewport, track, slides, previous, next, start = 0,
   let index = 2 * n + start;
   let step = 0;
   let animating = false;
+  let reported = -1;
 
   // Дробный шаг: offsetLeft округляет, и ошибка копится по десяткам карточек
   const measure = () => {
@@ -38,6 +40,8 @@ export function loopSlider({ viewport, track, slides, previous, next, start = 0,
   const place = (offset = 0, animate = false) => {
     track.classList.toggle(ANIMATING, animate && !reducedMotion.matches);
     track.style.transform = `translate3d(${-index * step + offset}px, 0, 0)`;
+    const first = ((index % n) + n) % n;
+    if (onChange && first !== reported) onChange(reported = first);
   };
   const visibleCount = () => Math.max(1, Math.round(viewport.clientWidth / step));
 

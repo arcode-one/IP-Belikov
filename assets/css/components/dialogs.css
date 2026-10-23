@@ -74,7 +74,8 @@
 }
 
 .lightbox__counter {
-  top: auto;
+  position: absolute;
+  z-index: var(--z-overlay);
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);

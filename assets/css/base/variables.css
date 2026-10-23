@@ -4,7 +4,7 @@
 	/* Цвета: основа */
 	--color-paper: #fff; /* фон страницы */
 	--color-ink: #2b2622; /* основной текст */
-	--color-ink-soft: #3d3631; /* текст под H1 */
+	--color-ink-soft: #3d3631; /* текст «О нас» */
 	--color-muted: #6a5f57; /* второстепенный текст, подсказки */
 	--color-accent: #5b4636; /* кнопки, акценты */
 	--color-accent-dark: #45352a; /* кнопки при наведении */
@@ -20,16 +20,10 @@
 	--color-field-border-focus: #cbb9a6;
 	--color-field-border-hover: #e2d6c8;
 	--color-photo-bg: #f1ece6; /* фон под фото, пока оно грузится */
-	--color-header: rgba(
-		60,
-		60,
-		60,
-		0.7
-	); /* полупрозрачная серая полоса шапки поверх фото, как в макете заказчика */
+	--color-hero-gradient: 133, 112, 101; /* градиент под заголовком на фото (от заказчика: R133 G112 B101), RGB без альфы */
 	--color-hero-bg: #3b2e25;
 	--color-footer: #f4f2f0;
-	--color-note-selected: #fbf8f4;
-	--color-note-hover: #bfae9c;
+	--color-divider: #c2a990; /* линия между «О нас» и формой */
 
 	/* Цвета: кнопки-треугольники */
 	--color-tri: rgba(120, 112, 104, 0.38); /* треугольники на белом фоне */
@@ -38,12 +32,12 @@
 	--color-tri-overlay-hover: #fff;
 
 	/* Затемнения */
-	--color-hero-shade: rgba(18, 12, 8, 0.2);
 	--color-backdrop: rgba(24, 18, 14, 0.82);
 	--color-backdrop-soft: rgba(24, 18, 14, 0.6);
 
 	/* Шрифт: C059 — свободный аналог Century Schoolbook */
 	--font-serif: "C059", "Century Schoolbook", Georgia, serif;
+	--font-sans: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif; /* заголовок на главном фото */
 	--font-size-base: 17px;
 	--font-size-small: 14px;
 	--font-size-title: 19px; /* H1 и заголовки плашек */
@@ -54,7 +48,7 @@
 	--gutter: 16px; /* отступ от края экрана */
 
 	/* Отступы между блоками */
-	--space-block: 80px;
+	--space-block: var(--space-title); /* над плашкой столько же, сколько под ней */
 	--space-title: 20px; /* от плашки до содержимого */
 	--space-footer: 64px;
 
@@ -85,7 +79,6 @@
 	:root {
 		--font-size-base: 16px;
 		--font-size-title: 17px;
-		--space-block: 52px;
 		--space-title: 16px;
 		--space-footer: 44px;
 		--radius-form: 14px;

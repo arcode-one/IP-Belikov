@@ -1,7 +1,7 @@
 import { el } from '../utils/dom.js';
 
-export function initIntro(content) {
-  document.querySelector('.intro__title').textContent = content.title;
-  const text = document.querySelector('.intro__text');
-  for (const paragraph of content.paragraphs) text.append(el('span', 'intro__paragraph', paragraph));
+export function initAbout(content) {
+  document.querySelector('.about__title').textContent = content.about.title;
+  const text = document.querySelector('.about__text');
+  for (const paragraph of content.about.paragraphs) text.append(el('p', 'about__paragraph', paragraph));
 }

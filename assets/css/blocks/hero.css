@@ -1,22 +1,10 @@
-.hero {
-  position: relative;
-  color: #fff;
-}
-
-/* Полупрозрачная полоса поверх фото: имя слева, контакты справа (как в макете заказчика) */
+/* Полоса над фото: имя слева, контакты справа */
 .hero__bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  padding: 9px 18px;
-  background: var(--color-header);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+  padding: 8px 4px;
 }
 
 .hero__brand {
@@ -33,22 +21,27 @@
 
 .hero__contacts a { text-decoration: none; }
 
-/* Главное фото, чуть приглушённое, как на макете */
+/* Главное фото с заголовком H1 на градиенте слева */
 .hero__image {
   position: relative;
-  height: clamp(220px, 32vw, 380px);
+  display: flex;
+  align-items: center;
+  height: clamp(240px, 34vw, 400px);
   background: var(--color-hero-bg);
   overflow: hidden;
 }
 
 .hero__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
-  filter: saturate(.78) contrast(1.04);
 }
 
+/* Градиент занимает до 50% ширины фото */
 .hero__image::after {
   content: "";
   position: absolute;
@@ -56,16 +49,50 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: var(--color-hero-shade);
+  background: linear-gradient(90deg,
+    rgba(var(--color-hero-gradient), .95) 0%,
+    rgba(var(--color-hero-gradient), .82) 24%,
+    rgba(var(--color-hero-gradient), 0) 50%);
   pointer-events: none;
+}
+
+.hero__title {
+  position: relative;
+  z-index: 1;
+  max-width: 44%;
+  margin: 0;
+  padding: 0 0 0 clamp(20px, 3vw, 36px);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+}
+
+.hero__title-main {
+  display: block;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.hero__title-sub {
+  display: block;
+  margin-top: 16px;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+@media (max-width: 860px) {
+  .hero__title { max-width: 52%; }
+  .hero__title-main { font-size: 26px; }
+  .hero__title-sub { font-size: 17px; }
 }
 
 @media (max-width: 560px) {
   .hero__bar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
-    padding: 10px 12px;
+    gap: 2px;
+    padding: 8px 0;
   }
 
   .hero__brand { font-size: 16px; }
@@ -75,14 +102,28 @@
     font-size: 15px;
   }
 
-  .hero__image { height: 260px; }
+  .hero__image { height: 240px; }
+
+  /* На узком экране градиент шире, иначе текст не помещается */
+  .hero__image::after {
+    background: linear-gradient(90deg,
+      rgba(var(--color-hero-gradient), .92) 0%,
+      rgba(var(--color-hero-gradient), .75) 50%,
+      rgba(var(--color-hero-gradient), 0) 85%);
+  }
+
+  .hero__title { max-width: 85%; }
+  .hero__title-main { font-size: 24px; }
+
+  .hero__title-sub {
+    margin-top: 10px;
+    font-size: 15px;
+  }
 }
 
-/* На тёмной полосе текст остаётся белым, появляется подчёркивание */
 @media (hover: hover) and (pointer: fine) {
   .hero__contacts a:hover {
-    color: #fff;
+    color: var(--color-accent);
     text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, .7);
   }
 }

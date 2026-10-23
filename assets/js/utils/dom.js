@@ -1,4 +1,4 @@
-/** Элемент с классом и текстом: el('p', 'intro__paragraph', 'Текст') */
+/** Элемент с классом и текстом: el('p', 'about__paragraph', 'Текст') */
 export function el(tag, className = '', text = '') {
   const node = document.createElement(tag);
   if (className) node.className = className;

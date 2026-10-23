@@ -10,3 +10,9 @@
   font-size: var(--font-size-title);
   font-weight: 700;
 }
+
+/* Заголовок без плашки («Виды изделий» по макету) */
+.section__title--plain {
+  padding-block: 0;
+  background: none;
+}

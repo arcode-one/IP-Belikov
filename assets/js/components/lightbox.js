@@ -27,7 +27,7 @@ export function initLightbox() {
 
   const previous = button('tri tri--overlay tri--prev lightbox__arrow', 'Предыдущее фото', () => step(-1), icon('tri-left'));
   const next = button('tri tri--overlay tri--next lightbox__arrow', 'Следующее фото', () => step(1), icon('tri-right'));
-  counter = el('span', 'stage__counter lightbox__counter');
+  counter = el('span', 'counter lightbox__counter');
   counter.setAttribute('aria-live', 'polite');
   dialog.append(previous, next, counter);
 
