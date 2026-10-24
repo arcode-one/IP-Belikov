@@ -12,7 +12,7 @@ $c = ipb_content();
 		<?php ipb_link( $c['email']['text'], $c['email']['href'] ); ?>
 	</div>
 	<div class="footer__social">
-		<p class="footer__social-title">Мы в соц. сетях:</p>
+		<p class="footer__social-title"><?php echo esc_html( $c['socials_title'] ); ?></p>
 		<nav class="footer__social-links" aria-label="Социальные сети и мессенджеры">
 			<?php foreach ( $c['socials'] as $social ) : ?>
 				<a class="social social--<?php echo esc_attr( $social['id'] ); ?>" href="<?php echo esc_url( $social['href'] ); ?>" aria-label="<?php echo esc_attr( $social['text'] ); ?>" title="<?php echo esc_attr( $social['text'] ); ?>" target="_blank" rel="noopener"><?php ipb_icon( $social['id'] ); ?></a>

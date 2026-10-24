@@ -2,11 +2,13 @@
 /**
  * Всплывающие элементы главной: плашка cookies, окно политики, просмотр фото
  */
+
+$cookie = ipb_content()['cookie'];
 ?>
 <div class="cookie" role="region" aria-label="Уведомление о cookies" hidden>
 	<span class="cookie__icon"><?php ipb_icon( 'cookie' ); ?></span>
-	<p class="cookie__text">Мы используем файлы cookies и обрабатываем персональные данные, чтобы сайт работал корректно. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="<?php echo esc_url( ipb_policy_url() ); ?>" data-policy>политикой обработки персональных данных</a>.</p>
-	<button class="button cookie__button" type="button">Согласен</button>
+	<p class="cookie__text"><?php echo esc_html( $cookie['text'] ); ?> <a href="<?php echo esc_url( ipb_policy_url() ); ?>" data-policy>политикой обработки персональных данных</a>.</p>
+	<button class="button cookie__button" type="button"><?php echo esc_html( $cookie['button'] ); ?></button>
 </div>
 
 <dialog class="policy-dialog" id="policy-dialog" aria-labelledby="policy-dialog-title">

@@ -4,6 +4,7 @@
  */
 
 $c    = ipb_content();
+$form = $c['form'];
 $rows = array(
 	array( 'map-pin', 'Адрес', $c['address'], '' ),
 	array( 'phone', 'Телефон', $c['phone']['text'], $c['phone']['href'] ),
@@ -12,7 +13,7 @@ $rows = array(
 ?>
 <section class="contact" id="contact" aria-labelledby="contact-title">
 	<div class="contact__box">
-		<h2 class="contact__title" id="contact-title">Напишите нам</h2>
+		<h2 class="contact__title" id="contact-title"><?php echo esc_html( $form['contact_title'] ); ?></h2>
 		<div class="contact__layout">
 			<ul class="contact__list">
 				<?php foreach ( $rows as list( $icon, $label, $text, $href ) ) : ?>
@@ -24,8 +25,8 @@ $rows = array(
 				<?php endforeach; ?>
 			</ul>
 			<div>
-				<p class="contact__lead">Если у Вас есть какие-либо вопросы — заполните форму ниже, и мы с Вами свяжемся.</p>
-				<form class="lead-form" novalidate data-endpoint="<?php echo esc_url( rest_url( 'ip-belikov/v1/lead' ) ); ?>" data-phone="<?php echo esc_attr( $c['phone']['text'] ); ?>">
+				<p class="contact__lead"><?php echo esc_html( $form['contact_lead'] ); ?></p>
+				<form class="lead-form" novalidate data-endpoint="<?php echo esc_url( rest_url( 'ip-belikov/v1/lead' ) ); ?>" data-phone="<?php echo esc_attr( $c['phone']['text'] ); ?>" data-success="<?php echo esc_attr( $form['success_message'] ); ?>">
 					<label class="lead-form__field">
 						<span class="sr-only">Имя</span>
 						<input class="lead-form__input" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Ваше имя" required>
@@ -46,10 +47,10 @@ $rows = array(
 					<label class="lead-form__hp" aria-hidden="true">Сайт <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
 					<label class="lead-form__consent">
 						<input class="lead-form__checkbox" name="consent" type="checkbox" required>
-						<span>Согласен на обработку персональных данных в соответствии с <a href="<?php echo esc_url( ipb_policy_url() ); ?>" data-policy>политикой конфиденциальности</a></span>
+						<span><?php echo esc_html( $form['consent_text'] ); ?> <a href="<?php echo esc_url( ipb_policy_url() ); ?>" data-policy>политикой конфиденциальности</a></span>
 					</label>
 					<div class="lead-form__footer">
-						<button class="button lead-form__submit" type="submit">Отправить<?php ipb_icon( 'send' ); ?></button>
+						<button class="button lead-form__submit" type="submit"><?php echo esc_html( $form['submit_label'] ); ?><?php ipb_icon( 'send' ); ?></button>
 						<p class="lead-form__status" role="status" aria-live="polite"></p>
 					</div>
 				</form>

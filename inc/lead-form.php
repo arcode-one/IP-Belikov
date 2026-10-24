@@ -46,7 +46,9 @@ function ipb_handle_lead( WP_REST_Request $request ) {
 	) );
 	$headers = $email_ok ? array( 'Reply-To: ' . $lead['name'] . ' <' . $lead['email'] . '>' ) : array();
 
-	if ( ! wp_mail( ipb_content()['email']['text'], 'Заявка с сайта: ' . $lead['name'], $body, $headers ) ) {
+	$c  = ipb_content();
+	$to = $c['form']['leads_email'] ?: $c['email']['text'];
+	if ( ! wp_mail( $to,'Заявка с сайта: ' . $lead['name'], $body, $headers ) ) {
 		return new WP_REST_Response( array( 'ok' => false ), 500 );
 	}
 	return array( 'ok' => true );

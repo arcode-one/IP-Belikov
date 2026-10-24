@@ -52,7 +52,8 @@ add_action( 'acf/init', function () {
 			$text( 'name', 'Название (в шапке и в микроразметке)' ),
 			$text( 'address', 'Адрес' ),
 			$text( 'phone', 'Телефон', array( 'instructions' => 'Как показывать на сайте, например 8 923 437 78 88. Ссылку для звонка сайт сделает сам.' ) ),
-			array( 'key' => 'field_ipb_email', 'name' => 'email', 'label' => 'Email', 'type' => 'email', 'instructions' => 'Сюда же приходят заявки с формы.' ),
+			array( 'key' => 'field_ipb_email', 'name' => 'email', 'label' => 'Email', 'type' => 'email', 'instructions' => 'Сюда же приходят заявки с формы, если ниже во вкладке «Форма и cookies» не указан другой адрес.' ),
+			$text( 'socials_title', 'Подпись к соцсетям в подвале' ),
 			array(
 				'key'          => 'field_ipb_socials',
 				'name'         => 'socials',
@@ -114,6 +115,16 @@ add_action( 'acf/init', function () {
 			$tab( 'about', 'О нас' ),
 			$text( 'about_title', 'Заголовок блока' ),
 			array( 'key' => 'field_ipb_about_text', 'name' => 'about_text', 'label' => 'Текст', 'type' => 'textarea', 'rows' => 10, 'new_lines' => '', 'instructions' => 'Абзацы разделяйте пустой строкой.' ),
+
+			$tab( 'form', 'Форма и cookies' ),
+			$text( 'contact_title', 'Заголовок блока с формой' ),
+			array( 'key' => 'field_ipb_contact_lead', 'name' => 'contact_lead', 'label' => 'Текст над формой', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '' ),
+			$text( 'consent_text', 'Текст согласия', array( 'instructions' => 'В конце сама добавится ссылка «политикой конфиденциальности».' ) ),
+			$text( 'submit_label', 'Текст кнопки' ),
+			$text( 'success_message', 'Сообщение после отправки' ),
+			array( 'key' => 'field_ipb_leads_email', 'name' => 'leads_email', 'label' => 'Куда приходят заявки', 'type' => 'email', 'instructions' => 'Если пусто — на email из вкладки «Контакты».' ),
+			array( 'key' => 'field_ipb_cookie_text', 'name' => 'cookie_text', 'label' => 'Текст плашки о cookies', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '', 'instructions' => 'В конце сама добавится ссылка «политикой обработки персональных данных».' ),
+			$text( 'cookie_button', 'Кнопка на плашке' ),
 
 			$tab( 'seo', 'SEO' ),
 			$text( 'seo_title', 'Заголовок вкладки (title)', array( 'required' => 1, 'maxlength' => 70, 'instructions' => 'Главное, что видно в поиске. До 60–70 символов.' ) ),

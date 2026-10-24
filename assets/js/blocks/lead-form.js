@@ -18,7 +18,7 @@ function formatPhone(digits) {
   return out;
 }
 
-// Адрес отправки и телефон для сообщения об ошибке приходят из разметки (template-parts/blocks/contact.php)
+// Адрес отправки, текст успеха и телефон для сообщения об ошибке приходят из разметки (template-parts/blocks/contact.php)
 export function initLeadForm() {
   const form = document.querySelector('.lead-form');
   const status = form.querySelector('.lead-form__status');
@@ -96,7 +96,7 @@ export function initLeadForm() {
       if (!response.ok) throw new Error(String(response.status));
       form.reset();
       phone.dataset.prev = '';
-      setStatus('Спасибо! Сообщение отправлено, мы скоро свяжемся с вами.', 'ok');
+      setStatus(form.dataset.success, 'ok');
     } catch {
       setStatus(`Не удалось отправить. Позвоните нам: ${form.dataset.phone}.`, 'error');
     } finally {

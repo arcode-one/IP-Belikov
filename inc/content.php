@@ -123,6 +123,14 @@ function ipb_content_from_fields( $c ) {
 		$c['about']['paragraphs'] = array_map( static fn( $p ) => preg_replace( '/\s*\R\s*/u', ' ', $p ), array_values( $about ) );
 	}
 
+	$c['socials_title'] = $text( 'socials_title' ) ?: $c['socials_title'];
+	foreach ( $c['form'] as $key => $value ) {
+		$c['form'][ $key ] = $text( $key ) ?: $value;
+	}
+	foreach ( $c['cookie'] as $key => $value ) {
+		$c['cookie'][ $key ] = $text( "cookie_$key" ) ?: $value;
+	}
+
 	$c['seo']['title']       = $text( 'seo_title' ) ?: $c['seo']['title'];
 	$c['seo']['description'] = $text( 'seo_description' ) ?: $c['seo']['description'];
 	$c['seo']['og_title']    = $text( 'og_title' ) ?: $c['seo']['og_title'];
@@ -230,6 +238,21 @@ function ipb_default_content() {
 				array( 'src' => 'assets/img/notes/okna-ekologichnost.webp', 'alt' => 'Деревянное окно в бревенчатом доме: окна из дерева становятся популярнее благодаря экологичности и естественному воздухообмену' ),
 			),
 		),
+		// Блок «Напишите нам». Пустой leads_email — заявки идут на email из контактов
+		'form'           => array(
+			'contact_title'   => 'Напишите нам',
+			'contact_lead'    => 'Если у Вас есть какие-либо вопросы — заполните форму ниже, и мы с Вами свяжемся.',
+			'consent_text'    => 'Согласен на обработку персональных данных в соответствии с',
+			'submit_label'    => 'Отправить',
+			'success_message' => 'Спасибо! Сообщение отправлено, мы скоро свяжемся с вами.',
+			'leads_email'     => '',
+		),
+		// Плашка о cookies, ссылка на политику добавляется в конце текста
+		'cookie'         => array(
+			'text'   => 'Мы используем файлы cookies и обрабатываем персональные данные, чтобы сайт работал корректно. Продолжая пользоваться сайтом, вы соглашаетесь с',
+			'button' => 'Согласен',
+		),
+		'socials_title'  => 'Мы в соц. сетях:',
 		'socials'        => array(
 			array( 'id' => 'vk', 'text' => 'ВКонтакте', 'href' => 'https://vk.ru/belikov_70' ),
 			array( 'id' => 'max', 'text' => 'MAX', 'href' => 'https://max.ru/u/f9LHodD0cOJBZn1jFNjC21VRcTMfF4meoePWZ_4RlE5FCegSaMcdsqHrvuk' ),
