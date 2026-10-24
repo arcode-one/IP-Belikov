@@ -1,20 +1,16 @@
-import { el, image, button } from '../utils/dom.js';
+import { el, button } from '../utils/dom.js';
 import { icon } from '../utils/icons.js';
 import { loopSlider } from '../components/loop-slider.js';
 
-export function initProducts(data, root) {
+// Карточки выводит template-parts/blocks/products.php, здесь собираем из них ленту
+export function initProducts(root, title) {
+  const slides = [...root.querySelectorAll('.products__item')];
   const viewport = el('div', 'slider__viewport');
   viewport.tabIndex = 0;
   viewport.setAttribute('role', 'region');
-  viewport.setAttribute('aria-label', data.title);
+  viewport.setAttribute('aria-label', title);
   const track = el('div', 'slider__track');
   viewport.append(track);
-
-  const slides = data.items.map((item) => {
-    const card = el('div', 'products__item');
-    card.append(image(item, { className: 'products__image', alt: '' }), el('h2', 'products__title', item.title));
-    return card;
-  });
 
   const previous = button('tri tri--prev products__arrow', 'Предыдущие изделия', null, icon('tri-left'));
   const next = button('tri tri--next products__arrow', 'Следующие изделия', null, icon('tri-right'));
@@ -32,8 +28,8 @@ export function initProducts(data, root) {
     onChange: (first) => { counter.textContent = `${first + 1} / ${slides.length}`; },
     // У копий H2 заменяем на div, чтобы заголовков было 7, а не 35
     prepareClone: (clone) => {
-      const title = clone.querySelector('h2');
-      title.replaceWith(el('div', 'products__title', title.textContent));
+      const heading = clone.querySelector('h2');
+      heading.replaceWith(el('div', 'products__title', heading.textContent));
     },
   });
 }

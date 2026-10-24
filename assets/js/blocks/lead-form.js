@@ -1,8 +1,3 @@
-import { icon } from '../utils/icons.js';
-
-// На GitHub Pages нет сервера: там форма работает в демо-режиме и ничего не отправляет
-const DEMO_MODE = location.hostname.endsWith('github.io');
-
 function phoneDigits(value) {
   let digits = value.replace(/\D/g, '');
   if (digits.startsWith('8')) digits = '7' + digits.slice(1);
@@ -23,12 +18,12 @@ function formatPhone(digits) {
   return out;
 }
 
-export function initLeadForm(content) {
+// Адрес отправки и телефон для сообщения об ошибке приходят из разметки (template-parts/blocks/contact.php)
+export function initLeadForm() {
   const form = document.querySelector('.lead-form');
   const status = form.querySelector('.lead-form__status');
   const submit = form.querySelector('.lead-form__submit');
   const { name, email, phone, consent, message, website } = form.elements;
-  submit.append(icon('send'));
 
   phone.addEventListener('input', () => {
     const deleting = phone.value.length < (phone.dataset.prev || '').length;
@@ -85,27 +80,25 @@ export function initLeadForm(content) {
     submit.disabled = true;
     setStatus('Отправляем…');
     try {
-      if (!DEMO_MODE) {
-        const digits = phoneDigits(phone.value);
-        const response = await fetch('/api/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name.value.trim(),
-            email: email.value.trim(),
-            phone: digits ? formatPhone(digits) : '',
-            message: message.value.trim(),
-            consent: consent.checked,
-            website: website.value,
-          }),
-        });
-        if (!response.ok) throw new Error(String(response.status));
-      }
+      const digits = phoneDigits(phone.value);
+      const response = await fetch(form.dataset.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.value.trim(),
+          email: email.value.trim(),
+          phone: digits ? formatPhone(digits) : '',
+          message: message.value.trim(),
+          consent: consent.checked,
+          website: website.value,
+        }),
+      });
+      if (!response.ok) throw new Error(String(response.status));
       form.reset();
       phone.dataset.prev = '';
-      setStatus(DEMO_MODE ? 'Демо: в прототипе сообщение никуда не отправляется.' : 'Спасибо! Сообщение отправлено, мы скоро свяжемся с вами.', 'ok');
+      setStatus('Спасибо! Сообщение отправлено, мы скоро свяжемся с вами.', 'ok');
     } catch {
-      setStatus(`Не удалось отправить. Позвоните нам: ${content.phone.text}.`, 'error');
+      setStatus(`Не удалось отправить. Позвоните нам: ${form.dataset.phone}.`, 'error');
     } finally {
       submit.disabled = false;
     }

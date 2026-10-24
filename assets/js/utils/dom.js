@@ -17,6 +17,12 @@ export function image(item, { className = '', eager = false, alt } = {}) {
   return img;
 }
 
+/** Фото из разметки: крупный файл из data-full, alt — у вложенной картинки */
+export function imageData(node) {
+  const img = node.querySelector('img');
+  return { src: node.dataset.full || img.src, alt: img.alt };
+}
+
 /** Ссылка, если адрес валидный (http, mailto, tel, #), иначе просто текст */
 export function link(text, href, className = '') {
   const valid = /^(https?:|mailto:|tel:|#)/i.test(href || '');

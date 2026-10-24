@@ -1,13 +1,7 @@
-import { el } from '../utils/dom.js';
-import { icon } from '../utils/icons.js';
-
 const STORAGE_KEY = 'cookie-consent';
 
 export function initCookie() {
   const banner = document.querySelector('.cookie');
-  const badge = el('span', 'cookie__icon');
-  badge.append(icon('cookie'));
-  banner.prepend(badge);
 
   let accepted = false;
   try { accepted = localStorage.getItem(STORAGE_KEY) === '1'; } catch { /* приватный режим */ }

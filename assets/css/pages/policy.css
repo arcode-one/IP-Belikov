@@ -32,20 +32,22 @@
   font-size: 15px;
 }
 
-.policy__heading {
+/* Текст страницы приходит из редактора WordPress, поэтому стили по тегам */
+.policy__content h2 {
   margin: 28px 0 8px;
   font-size: 22px;
   line-height: 1.3;
 }
 
-.policy__text,
-.policy__list li { line-height: 1.6; }
+.policy__content p,
+.policy__content li { line-height: 1.6; }
 
-.policy__list { padding-left: 22px; }
+.policy__content ul,
+.policy__content ol { padding-left: 22px; }
 
 @media (max-width: 560px) {
   .policy__title { font-size: 25px; }
-  .policy__heading { font-size: 20px; }
+  .policy__content h2 { font-size: 20px; }
 }
 
 @media (hover: hover) and (pointer: fine) {

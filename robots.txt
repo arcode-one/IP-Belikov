@@ -1,6 +1,0 @@
-# ТЗ п. 4.4 — базовая SEO-настройка
-User-agent: *
-Allow: /
-Disallow: /data/
-
-Sitemap: https://xn--80aeffphfpdihwql.xn--p1ai/sitemap.xml

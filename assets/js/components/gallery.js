@@ -1,4 +1,4 @@
-import { el, image, button } from '../utils/dom.js';
+import { el, image, button, imageData } from '../utils/dom.js';
 import { icon } from '../utils/icons.js';
 import { bindSwipe, bindArrowKeys } from '../utils/gestures.js';
 import { createStage, createSideList, revealInList } from './stage.js';
@@ -7,8 +7,11 @@ import { openImage } from './lightbox.js';
 /**
  * Галерея: большое фото с треугольниками и счётчиком, справа колонка миниатюр.
  * Используется в «Галерее работ» и «Полезных заметках».
+ * Миниатюры выводит template-parts/blocks/gallery.php, остальное собираем здесь.
  */
-export function createGallery(items, root, { listLabel }) {
+export function createGallery(root, { listLabel }) {
+  const thumbs = [...root.querySelectorAll('.side-list__thumb')];
+  const items = thumbs.map(imageData);
   let index = 0;
 
   const { stage, photo } = createStage(() => openImage(items[index], photo, { items, index, onChange: go }));
@@ -19,11 +22,8 @@ export function createGallery(items, root, { listLabel }) {
   stage.append(previous, next, counter);
 
   const { side, list, update } = createSideList(listLabel);
-  const thumbs = items.map((item, i) => {
-    const thumb = button('side-list__thumb', `Показать фото ${i + 1}`, () => go(i), image(item, { alt: '' }));
-    list.append(thumb);
-    return thumb;
-  });
+  thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => go(i)));
+  list.append(...thumbs);
   root.append(stage, side);
 
   function go(target) {
