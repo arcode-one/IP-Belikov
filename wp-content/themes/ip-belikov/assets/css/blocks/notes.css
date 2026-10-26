@@ -10,6 +10,13 @@
   background: var(--color-paper);
 }
 
+/* До запуска JS: миниатюры прячем, место под большое фото держим (как в галерее работ) */
+.notes > .side-list__thumb { display: none; }
+.notes:not(:has(> .stage))::before {
+  content: "";
+  aspect-ratio: 2 / 1;
+}
+
 /* Миниатюры целиком, без обрезки: на них виден текст заметки */
 .notes .side-list__thumb {
   height: auto;
@@ -28,7 +35,8 @@
 /* Телефон: картинка выше (заметки бывают вертикальными), миниатюры лентой под ней */
 @media (max-width: 700px) {
   .notes { grid-template-columns: minmax(0, 1fr); }
-  .notes .stage { aspect-ratio: 1 / 1; }
+  .notes .stage,
+  .notes:not(:has(> .stage))::before { aspect-ratio: 1 / 1; }
 
   .notes .side-list__items {
     flex-direction: row;
@@ -37,6 +45,12 @@
   }
 
   .notes .side-list__thumb { height: 96px; }
+
+  /* До запуска JS — место и под ленту миниатюр */
+  .notes:not(:has(> .stage))::after {
+    content: "";
+    height: 96px;
+  }
 
   .notes .side-list__thumb img {
     width: auto;

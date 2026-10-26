@@ -47,22 +47,6 @@ img {
 	outline-offset: 3px;
 }
 
-/* Пока страница собирается (скрипты, шрифт), она скрыта и затем плавно появляется.
-   Страховка: если что-то зависло, страница всё равно покажется через 2,5 с */
-.is-loading body {
-	opacity: 0;
-	animation: page-reveal 0s linear 2.5s forwards;
-}
-
-body {
-	transition: opacity 250ms var(--ease-out);
-}
-
-@keyframes page-reveal {
-	to {
-		opacity: 1;
-	}
-}
 
 /* Контейнер страницы */
 .container {

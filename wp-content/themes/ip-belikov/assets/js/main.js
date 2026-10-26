@@ -22,12 +22,8 @@ const sections = [
 ];
 for (const [id, init] of sections) {
   const section = document.querySelector(`#${id}`);
-  if (section) init(section.querySelector(`.${id}`), section.querySelector('.section__title').textContent);
+  if (section) init(section.querySelector(`.${id}`));
 }
 
 initLeadForm();
 initCookie();
-
-// Показываем страницу, когда всё собрано и шрифт загружен (но ждём шрифт не дольше 1,5 с)
-const fontsReady = Promise.race([document.fonts.ready, new Promise((resolve) => setTimeout(resolve, 1500))]);
-fontsReady.then(() => document.documentElement.classList.remove('is-loading'));
