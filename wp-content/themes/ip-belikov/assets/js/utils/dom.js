@@ -17,10 +17,15 @@ export function image(item, { className = '', eager = false, alt } = {}) {
   return img;
 }
 
-/** Фото из разметки: крупный файл из data-full, alt — у вложенной картинки */
+/** Фото из разметки: крупный файл из data-full, alt и превью (уже загруженный размер) — у вложенной картинки */
 export function imageData(node) {
   const img = node.querySelector('img');
-  return { src: node.dataset.full || img.src, alt: img.alt };
+  return {
+    src: node.dataset.full || img.src,
+    alt: img.alt,
+    // Берём в момент открытия: ленивая картинка к этому времени уже скачана (currentSrc — выбранный из srcset)
+    get preview() { return img.currentSrc || img.src; },
+  };
 }
 
 /** Ссылка, если адрес валидный (http, mailto, tel, #), иначе просто текст */
