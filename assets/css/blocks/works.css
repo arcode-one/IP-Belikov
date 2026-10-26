@@ -4,6 +4,14 @@
   gap: 14px;
 }
 
+/* До запуска JS миниатюры ещё не разложены по колонке: прячем их и держим место под большое фото,
+   чтобы страница не прыгала */
+.works > .side-list__thumb { display: none; }
+.works:not(:has(> .stage))::before {
+  content: "";
+  aspect-ratio: 4 / 3;
+}
+
 /* Планшет: колонка миниатюр поуже */
 @media (max-width: 860px) {
   .works { grid-template-columns: minmax(0, 1fr) 130px; }
@@ -22,6 +30,12 @@
 
   .works .side-list__thumb {
     width: 96px;
+    height: 72px;
+  }
+
+  /* До запуска JS — место и под ленту миниатюр */
+  .works:not(:has(> .stage))::after {
+    content: "";
     height: 72px;
   }
 }

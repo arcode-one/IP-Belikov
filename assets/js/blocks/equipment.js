@@ -1,18 +1,14 @@
-import { el, button, imageData } from '../utils/dom.js';
+import { button, imageData } from '../utils/dom.js';
 import { icon } from '../utils/icons.js';
 import { loopSlider } from '../components/loop-slider.js';
 import { openImage } from '../components/lightbox.js';
 
-// Карточки выводит template-parts/blocks/equipment.php, здесь собираем из них ленту
-export function initEquipment(root, title) {
-  const slides = [...root.querySelectorAll('.equipment__item')];
+// Окно ленты с фото выводит template-parts/blocks/equipment.php, здесь — стрелки, прокрутка и просмотр
+export function initEquipment(root) {
+  const viewport = root.querySelector('.slider__viewport');
+  const track = viewport.querySelector('.slider__track');
+  const slides = [...track.querySelectorAll('.equipment__item')];
   const items = slides.map(imageData);
-  const viewport = el('div', 'slider__viewport');
-  viewport.tabIndex = 0;
-  viewport.setAttribute('role', 'region');
-  viewport.setAttribute('aria-label', title);
-  const track = el('div', 'slider__track');
-  viewport.append(track);
 
   // Клик ловим на треке: так открываются и оригиналы, и копии по краям ленты
   track.addEventListener('click', (event) => {
@@ -24,6 +20,6 @@ export function initEquipment(root, title) {
 
   const previous = button('tri tri--overlay tri--prev', 'Предыдущие фото', null, icon('tri-left'));
   const next = button('tri tri--overlay tri--next', 'Следующие фото', null, icon('tri-right'));
-  root.append(viewport, previous, next);
+  root.append(previous, next);
   loopSlider({ viewport, track, slides, previous, next });
 }

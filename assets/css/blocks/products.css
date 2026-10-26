@@ -6,6 +6,9 @@
   gap: 6px;
 }
 
+/* Окно ленты — всегда в средней колонке: до запуска JS стрелок ещё нет, а карточки уже стоят на месте */
+.products > .slider__viewport { grid-column: 2; }
+
 .products__arrow { height: 64px; }
 
 .products__arrow .icon {

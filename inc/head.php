@@ -29,9 +29,6 @@ add_action( 'wp_head', function () {
 	}
 	$c = ipb_content();
 
-	// Пока страница собирается, она скрыта; main.js показывает её, когда готовы скрипты и шрифт
-	echo "<script>document.documentElement.classList.add('is-loading');</script>\n";
-
 	foreach ( array( 'C059-Roman', 'C059-Bold' ) as $font ) {
 		printf( "<link rel=\"preload\" href=\"%s\" as=\"font\" type=\"font/woff2\" crossorigin>\n", esc_url( get_theme_file_uri( "assets/fonts/$font.woff2" ) ) );
 	}
