@@ -14,10 +14,32 @@
   font-size: var(--font-size-title);
 }
 
+/* Слева контакты, справа текст и форма. Строки сетки: текст / поля формы / согласие и кнопка;
+   форма делит строки с сеткой (subgrid), поэтому контакты стоят по центру именно полей */
 .contact__layout {
   display: grid;
   grid-template-columns: 200px minmax(0, 1fr);
-  gap: 32px;
+  grid-template-rows: auto auto auto;
+  column-gap: 32px;
+  row-gap: 10px;
+}
+
+.contact__layout > .contact__lead {
+  grid-column: 2;
+  grid-row: 1;
+  margin-bottom: 2px;
+}
+
+.contact__layout > .contact__list {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+}
+
+.contact__layout > .lead-form {
+  grid-column: 2;
+  grid-row: 2 / 4;
+  grid-template-rows: subgrid;
 }
 
 .contact__list {
@@ -54,6 +76,12 @@
 
 /* Форма */
 .lead-form {
+  display: grid;
+  gap: 10px;
+}
+
+.lead-form__fields,
+.lead-form__actions {
   display: grid;
   gap: 10px;
 }
@@ -148,8 +176,20 @@
 @media (max-width: 860px) {
   .contact__layout {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
     gap: 18px;
   }
+
+  /* Одна колонка: контакты, текст, форма — по порядку в разметке */
+  .contact__layout > .contact__lead,
+  .contact__layout > .contact__list,
+  .contact__layout > .lead-form {
+    grid-column: auto;
+    grid-row: auto;
+    grid-template-rows: none;
+  }
+
+  .contact__layout > .contact__lead { margin-bottom: -8px; }
 
   .contact__list {
     grid-template-columns: repeat(3, minmax(0, 1fr));

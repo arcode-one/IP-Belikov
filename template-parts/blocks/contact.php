@@ -24,9 +24,10 @@ $rows = array(
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<div>
-				<p class="contact__lead"><?php echo esc_html( $form['contact_lead'] ); ?></p>
-				<form class="lead-form" novalidate data-endpoint="<?php echo esc_url( rest_url( 'ip-belikov/v1/lead' ) ); ?>" data-phone="<?php echo esc_attr( $c['phone']['text'] ); ?>" data-success="<?php echo esc_attr( $form['success_message'] ); ?>">
+			<p class="contact__lead"><?php echo esc_html( $form['contact_lead'] ); ?></p>
+			<form class="lead-form" novalidate data-endpoint="<?php echo esc_url( rest_url( 'ip-belikov/v1/lead' ) ); ?>" data-phone="<?php echo esc_attr( $c['phone']['text'] ); ?>" data-success="<?php echo esc_attr( $form['success_message'] ); ?>">
+				<!-- Поля и низ формы — отдельные строки сетки: контакты слева встают по центру полей -->
+				<div class="lead-form__fields">
 					<label class="lead-form__field">
 						<span class="sr-only">Имя</span>
 						<input class="lead-form__input" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Ваше имя" required>
@@ -45,6 +46,8 @@ $rows = array(
 					</label>
 					<!-- Ловушка для ботов: люди это поле не видят -->
 					<label class="lead-form__hp" aria-hidden="true">Сайт <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+				</div>
+				<div class="lead-form__actions">
 					<label class="lead-form__consent">
 						<input class="lead-form__checkbox" name="consent" type="checkbox" required>
 						<span><?php echo esc_html( $form['consent_text'] ); ?> <a href="<?php echo esc_url( ipb_policy_url() ); ?>" data-policy>политикой конфиденциальности</a></span>
@@ -53,8 +56,8 @@ $rows = array(
 						<button class="button lead-form__submit" type="submit"><?php echo esc_html( $form['submit_label'] ); ?><?php ipb_icon( 'send' ); ?></button>
 						<p class="lead-form__status" role="status" aria-live="polite"></p>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>

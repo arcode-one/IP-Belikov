@@ -1,5 +1,6 @@
-/* Полоса над фото: имя слева, контакты справа */
+/* Полоса над фото: имя слева, контакты справа. Шрифт Arial — по правке заказчика */
 .hero__bar {
+  font-family: var(--font-sans);
   display: flex;
   justify-content: space-between;
   align-items: center;

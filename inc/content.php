@@ -52,6 +52,11 @@ function ipb_content_from_fields( $c ) {
 		// Флаг u обязателен: без него \R режет кириллицу (байт \x85 внутри буквы «х»)
 		return array_values( array_filter( array_map( 'trim', preg_split( '/\R/u', $value ) ) ) );
 	};
+	// Абзацы через пустую строку; одиночные переносы внутри абзаца — пробел
+	$paragraphs = static function ( $value ) {
+		$list = array_filter( array_map( 'trim', preg_split( '/\R\s*\R/u', trim( (string) $value ) ) ) );
+		return array_values( array_map( static fn( $p ) => preg_replace( '/\s*\R\s*/u', ' ', $p ), $list ) );
+	};
 	// Список фото ни разу не сохраняли — показываем запасной
 	$saved = static function ( $name ) {
 		return false !== get_option( "options_$name" );
@@ -116,12 +121,8 @@ function ipb_content_from_fields( $c ) {
 		}
 	}
 
-	// О нас: абзацы через пустую строку
-	$c['about']['title'] = $text( 'about_title' ) ?: $c['about']['title'];
-	$about               = array_filter( array_map( 'trim', preg_split( '/\R\s*\R/u', $text( 'about_text' ) ) ) );
-	if ( $about ) {
-		$c['about']['paragraphs'] = array_map( static fn( $p ) => preg_replace( '/\s*\R\s*/u', ' ', $p ), array_values( $about ) );
-	}
+	$c['about']['title']      = $text( 'about_title' ) ?: $c['about']['title'];
+	$c['about']['paragraphs'] = $paragraphs( $text( 'about_text' ) ) ?: $c['about']['paragraphs'];
 
 	$c['socials_title'] = $text( 'socials_title' ) ?: $c['socials_title'];
 	foreach ( $c['form'] as $key => $value ) {
@@ -166,7 +167,7 @@ function ipb_default_content() {
 		'name'           => 'ИП Беликов Александр Вячеславович',
 		'address'        => 'г. Томск, ул. Профсоюзная 2/36',
 		// Ссылки tel: и mailto: ipb_content() собирает сама
-		'phone'          => array( 'text' => '8 923 437 78 88' ),
+		'phone'          => array( 'text' => '+7 923 437 78 88' ),
 		'email'          => array( 'text' => 'zakaz@easy-wood.ru' ),
 		'hero'           => array( 'src' => 'assets/img/hero/hero.webp', 'alt' => 'Фасад деревянного дома в Томске с резными наличниками и белыми окнами' ),
 		// H1 поверх главного фото: две строки крупно и подстрока

@@ -1,7 +1,8 @@
+/* Поля вокруг фото белые, как фон страницы (правка заказчика) */
 .stage {
   position: relative;
   aspect-ratio: 4 / 3;
-  background: var(--color-photo-bg);
+  background: var(--color-paper);
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
 }

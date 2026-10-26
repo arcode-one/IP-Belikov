@@ -10,6 +10,7 @@ require get_theme_file_path( 'inc/content.php' );
 require get_theme_file_path( 'inc/template-helpers.php' );
 require get_theme_file_path( 'inc/head.php' );
 require get_theme_file_path( 'inc/lead-form.php' );
+require get_theme_file_path( 'inc/cleanup.php' );
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'title-tag' );

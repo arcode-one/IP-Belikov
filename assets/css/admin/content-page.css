@@ -1,0 +1,154 @@
+/* Админка: страница «Контент сайта» (inc/fields.php). Вкладки слева и поля — одна карточка */
+
+.toplevel_page_ipb-content {
+	--ipb-accent: #5b4636;
+	--ipb-accent-soft: #f4efea;
+	--ipb-border: #dcdcde;
+	--ipb-muted: #646970;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content > .acf-fields.-sidebar {
+	min-height: 560px;
+	padding: 8px 28px 20px 236px !important;
+	background: #fff;
+	border: 1px solid var(--ipb-border);
+	border-radius: 8px;
+	box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content > .acf-fields.-sidebar::before { display: none; }
+
+/* Навигация по вкладкам */
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group {
+	top: 12px;
+	left: 12px;
+	width: 200px;
+	margin: 0;
+	padding: 6px !important;
+	background: #f6f7f7;
+	border-radius: 6px;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group li { margin: 0 0 2px; }
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group li a,
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left:first-child .acf-tab-group li:first-child a {
+	margin: 0;
+	padding: 9px 12px;
+	border: 0;
+	border-radius: 4px;
+	background: transparent;
+	color: #3c434a;
+	font-size: 14px;
+	line-height: 20px;
+	transition: background-color 120ms ease, color 120ms ease;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group li a:hover {
+	background: #fff;
+	color: #1d2327;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group li a:focus-visible {
+	outline: 2px solid var(--ipb-accent);
+	outline-offset: -2px;
+	box-shadow: none;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group li.active a {
+	margin: 0;
+	background: var(--ipb-accent);
+	color: #fff;
+	font-weight: 600;
+}
+
+/* Поля: подписи крупнее, подсказки приглушённые */
+.toplevel_page_ipb-content #acf-group_ipb_content > .acf-fields > .acf-field { padding: 16px 0; }
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-label label {
+	color: #1d2327;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-label .description {
+	max-width: 640px;
+	color: var(--ipb-muted);
+}
+
+/* Короткие поля не растягиваем на всю ширину, списки и галереи — на всю */
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-field-text > .acf-input,
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-field-email > .acf-input,
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-field-url > .acf-input,
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-field-textarea > .acf-input { max-width: 640px; }
+
+.toplevel_page_ipb-content #acf-group_ipb_content input[type="text"],
+.toplevel_page_ipb-content #acf-group_ipb_content input[type="email"],
+.toplevel_page_ipb-content #acf-group_ipb_content input[type="url"],
+.toplevel_page_ipb-content #acf-group_ipb_content textarea,
+.toplevel_page_ipb-content #acf-group_ipb_content select {
+	min-height: 38px;
+	border-color: #c3c4c7;
+	border-radius: 4px;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content input:focus,
+.toplevel_page_ipb-content #acf-group_ipb_content textarea:focus,
+.toplevel_page_ipb-content #acf-group_ipb_content select:focus {
+	border-color: var(--ipb-accent);
+	box-shadow: 0 0 0 1px var(--ipb-accent);
+}
+
+/* Повторители и галереи */
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-table,
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-gallery {
+	border-color: var(--ipb-border);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-table > thead > tr > th {
+	background: #f6f7f7;
+	color: #3c434a;
+	font-weight: 600;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-gallery-main { background: #fbfbfb; }
+
+/* Кнопки «Добавить…» и «Сохранить» в цвет сайта */
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-actions .acf-button.button-primary,
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-gallery-add.button-primary,
+.toplevel_page_ipb-content #submitdiv #publish {
+	background: var(--ipb-accent);
+	border-color: var(--ipb-accent);
+	color: #fff;
+}
+
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-actions .acf-button.button-primary:hover,
+.toplevel_page_ipb-content #acf-group_ipb_content .acf-gallery-add.button-primary:hover,
+.toplevel_page_ipb-content #submitdiv #publish:hover {
+	background: #4a3829;
+	border-color: #4a3829;
+}
+
+.toplevel_page_ipb-content #submitdiv {
+	border-color: var(--ipb-border);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+/* Узкий экран: вкладки строкой над полями */
+@media screen and (max-width: 960px) {
+	.toplevel_page_ipb-content #acf-group_ipb_content > .acf-fields.-sidebar { padding: 12px 16px 16px !important; }
+
+	.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group {
+		position: static;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		width: auto;
+		margin-bottom: 8px;
+	}
+
+	.toplevel_page_ipb-content #acf-group_ipb_content .acf-tab-wrap.-left .acf-tab-group li { margin: 0; }
+}

@@ -9,6 +9,15 @@ defined( 'ABSPATH' ) || exit;
 // Поля задаются только кодом: меню SCF клиенту ни к чему
 add_filter( 'acf/settings/show_admin', '__return_false' );
 
+add_action( 'admin_enqueue_scripts', function ( $hook ) {
+	if ( 'toplevel_page_ipb-content' === $hook ) {
+		$css = 'assets/css/admin/content-page.css';
+		wp_enqueue_style( 'ipb-content-page', get_theme_file_uri( $css ), array( 'acf-input' ), ipb_ver( $css ) );
+		$js = 'assets/js/admin/content-page.js';
+		wp_enqueue_script( 'ipb-content-page', get_theme_file_uri( $js ), array( 'acf-input' ), ipb_ver( $js ), true );
+	}
+} );
+
 add_action( 'acf/init', function () {
 	acf_add_options_page( array(
 		'page_title' => 'Контент сайта',
@@ -51,7 +60,7 @@ add_action( 'acf/init', function () {
 			$tab( 'contacts', 'Контакты' ),
 			$text( 'name', 'Название (в шапке и в микроразметке)' ),
 			$text( 'address', 'Адрес' ),
-			$text( 'phone', 'Телефон', array( 'instructions' => 'Как показывать на сайте, например 8 923 437 78 88. Ссылку для звонка сайт сделает сам.' ) ),
+			$text( 'phone', 'Телефон', array( 'instructions' => 'Как показывать на сайте, например +7 923 437 78 88. Ссылку для звонка сайт сделает сам.' ) ),
 			array( 'key' => 'field_ipb_email', 'name' => 'email', 'label' => 'Email', 'type' => 'email', 'instructions' => 'Сюда же приходят заявки с формы, если ниже во вкладке «Форма и cookies» не указан другой адрес.' ),
 			$text( 'socials_title', 'Подпись к соцсетям в подвале' ),
 			array(
@@ -81,10 +90,11 @@ add_action( 'acf/init', function () {
 				'type'         => 'repeater',
 				'layout'       => 'table',
 				'button_label' => 'Добавить изделие',
-				'instructions' => 'Порядок меняется перетаскиванием. Если не добавить ни одного, блок скроется.',
+				'instructions' => 'Новое изделие появляется первым, порядок меняется перетаскиванием. Если не добавить ни одного, блок скроется.',
+				// Ключи подполей уникальны: иначе SCF путает их с одноимёнными полями верхнего уровня
 				'sub_fields'   => array(
-					$image( 'image', 'Картинка' ),
-					$text( 'title', 'Название' ),
+					$image( 'image', 'Картинка', array( 'key' => 'field_ipb_product_image', 'preview_size' => 'thumbnail' ) ),
+					$text( 'title', 'Название', array( 'key' => 'field_ipb_product_title' ) ),
 				),
 			),
 
@@ -101,10 +111,10 @@ add_action( 'acf/init', function () {
 				'type'         => 'repeater',
 				'layout'       => 'table',
 				'button_label' => 'Добавить фото',
-				'instructions' => $alt_hint,
+				'instructions' => 'Новое фото появляется первым, порядок меняется перетаскиванием. ' . $alt_hint,
 				'sub_fields'   => array(
-					$image( 'image', 'Фото' ),
-					$text( 'caption', 'Подпись на фото' ),
+					$image( 'image', 'Фото', array( 'key' => 'field_ipb_equipment_item_image', 'preview_size' => 'thumbnail' ) ),
+					$text( 'caption', 'Подпись на фото', array( 'key' => 'field_ipb_equipment_item_caption' ) ),
 				),
 			),
 

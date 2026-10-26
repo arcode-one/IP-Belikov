@@ -1,9 +1,8 @@
-/* О нас: над блоком тонкая полоса, под ним линия перед формой */
+/* О нас: над блоком тонкая полоса; линию перед формой заказчик попросил убрать */
 .about {
   margin-top: var(--space-block);
-  padding: 14px 0 24px;
+  padding: 14px 0 0;
   border-top: 6px solid var(--color-band);
-  border-bottom: 1px solid var(--color-divider);
 }
 
 .about__title {

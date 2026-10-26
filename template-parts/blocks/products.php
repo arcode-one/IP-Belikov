@@ -9,7 +9,7 @@ if ( empty( $data['items'] ) ) {
 }
 ?>
 <section class="section" id="products" aria-labelledby="products-title">
-	<h2 class="section__title section__title--plain" id="products-title"><?php echo esc_html( $data['title'] ); ?></h2>
+	<h2 class="section__title" id="products-title"><?php echo esc_html( $data['title'] ); ?></h2>
 	<div class="products slider">
 		<?php foreach ( $data['items'] as $item ) : ?>
 			<div class="products__item">
