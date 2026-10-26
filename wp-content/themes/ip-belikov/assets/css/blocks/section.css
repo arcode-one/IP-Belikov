@@ -1,0 +1,12 @@
+.section {
+  margin-top: var(--space-block);
+}
+
+.section__title {
+  margin: 0 0 var(--space-title);
+  padding: 6px 16px;
+  background: var(--color-band);
+  text-align: center;
+  font-size: var(--font-size-title);
+  font-weight: 700;
+}

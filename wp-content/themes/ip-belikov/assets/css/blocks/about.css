@@ -1,0 +1,29 @@
+/* О нас: над блоком тонкая полоса; линию перед формой заказчик попросил убрать */
+.about {
+  margin-top: var(--space-block);
+  padding: 14px 0 0;
+  border-top: 6px solid var(--color-band);
+}
+
+.about__title {
+  margin: 0 0 14px;
+  text-align: center;
+  font-size: var(--font-size-title);
+}
+
+.about__text {
+  color: var(--color-ink-soft);
+}
+
+.about__paragraph {
+  margin: 0;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.about__paragraph + .about__paragraph { margin-top: 10px; }
+
+@media (max-width: 560px) {
+  .about__paragraph { text-align: left; }
+}

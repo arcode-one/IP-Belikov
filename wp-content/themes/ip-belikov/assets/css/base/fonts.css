@@ -1,0 +1,21 @@
+@font-face {
+	font-family: "C059";
+	src: url("../../fonts/C059-Roman.woff2") format("woff2");
+	font-weight: 400;
+	font-display: block;
+}
+
+@font-face {
+	font-family: "C059";
+	src: url("../../fonts/C059-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-display: block;
+}
+
+@font-face {
+	font-family: "C059";
+	src: url("../../fonts/C059-Italic.woff2") format("woff2");
+	font-weight: 400;
+	font-style: italic;
+	font-display: block;
+}

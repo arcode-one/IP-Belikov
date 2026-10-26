@@ -1,0 +1,27 @@
+.works {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  gap: 14px;
+}
+
+/* Планшет: колонка миниатюр поуже */
+@media (max-width: 860px) {
+  .works { grid-template-columns: minmax(0, 1fr) 130px; }
+  .works .side-list__thumb { height: 96px; }
+}
+
+/* Телефон: миниатюры лентой под фото */
+@media (max-width: 700px) {
+  .works { grid-template-columns: minmax(0, 1fr); }
+
+  .works .side-list__items {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .works .side-list__thumb {
+    width: 96px;
+    height: 72px;
+  }
+}
