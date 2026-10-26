@@ -53,7 +53,8 @@ add_action( 'wp_head', function () {
 		printf( "<link rel=\"preload\" href=\"%s\" as=\"style\">\n", esc_url( get_theme_file_uri( "assets/css/$css" ) ) );
 	}
 
-	foreach ( glob( get_theme_file_path( 'assets/js/*/*.js' ) ) as $file ) {
+	// Скрипты админки (assets/js/admin) на сайте не нужны
+	foreach ( glob( get_theme_file_path( 'assets/js/{blocks,components,utils}/*.js' ), GLOB_BRACE ) as $file ) {
 		$relative = 'assets/js/' . basename( dirname( $file ) ) . '/' . basename( $file );
 		printf( "<link rel=\"modulepreload\" href=\"%s\">\n", esc_url( get_theme_file_uri( $relative ) ) );
 	}

@@ -79,24 +79,28 @@ export function initLeadForm() {
     }
     submit.disabled = true;
     setStatus('Отправляем…');
+    // Без адреса отправки (статичная демо-копия на GitHub Pages) форма ничего не шлёт
+    const demo = !form.dataset.endpoint;
     try {
-      const digits = phoneDigits(phone.value);
-      const response = await fetch(form.dataset.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name.value.trim(),
-          email: email.value.trim(),
-          phone: digits ? formatPhone(digits) : '',
-          message: message.value.trim(),
-          consent: consent.checked,
-          website: website.value,
-        }),
-      });
-      if (!response.ok) throw new Error(String(response.status));
+      if (!demo) {
+        const digits = phoneDigits(phone.value);
+        const response = await fetch(form.dataset.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name.value.trim(),
+            email: email.value.trim(),
+            phone: digits ? formatPhone(digits) : '',
+            message: message.value.trim(),
+            consent: consent.checked,
+            website: website.value,
+          }),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+      }
       form.reset();
       phone.dataset.prev = '';
-      setStatus(form.dataset.success, 'ok');
+      setStatus(demo ? 'Демо-версия: сообщение никуда не отправляется.' : form.dataset.success, 'ok');
     } catch {
       setStatus(`Не удалось отправить. Позвоните нам: ${form.dataset.phone}.`, 'error');
     } finally {
